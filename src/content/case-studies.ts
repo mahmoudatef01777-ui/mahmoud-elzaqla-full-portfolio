@@ -1,4 +1,5 @@
 import type { Localized } from './types';
+import type { SocialPlatform } from './social';
 
 /** Who actually did a thing. Shown as a tag so credit is never ambiguous. */
 export type By = 'did' | 'advised' | 'client' | 'existing' | 'result';
@@ -46,6 +47,21 @@ export interface CaseStudy {
   status?: Localized;
   intro: Localized;
   links?: Array<{ label: string; href: string }>;
+  /**
+   * Platforms to surface as icon links beside the brand name.
+   *
+   * The full row of social icons was taken off these headers on 2026-09-15
+   * because three platform icons under a brand name is a set of exits, not a
+   * citation. This is the exception that rule needed: when the evidence in
+   * the case IS an account — Fakhama's results are its TikTok — the reader's
+   * next move is to go and look at it, and refusing them the link makes the
+   * figures harder to believe, not tidier.
+   *
+   * So: name only the platform a case actually rests on, never the whole set.
+   * The href still comes from `links`, so a platform named here without a
+   * matching link simply renders nothing.
+   */
+  social?: SocialPlatform[];
   /**
    * A live site, shown as a demo frame instead of described.
    *
@@ -349,6 +365,8 @@ export const caseStudies: CaseStudy[] = [
       { label: 'Instagram', href: 'https://instagram.com/fkhama.eg' },
       { label: 'Facebook', href: 'https://facebook.com/fkhamaaboanas' },
     ],
+    // The 1.5M views and the 43.6K followers in the results are this account.
+    social: ['tiktok'],
     sections: [
       {
         id: 'challenge',

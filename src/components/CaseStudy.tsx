@@ -4,6 +4,7 @@ import { useLang } from '@/i18n/LanguageProvider';
 import { byLabel, caseStudyById, projectsStrip, splitLinks } from '@/content';
 import type { By, CaseSection, CaseShot } from '@/content';
 import { Chip, SectionTitle } from './ui';
+import SocialLinks from './ui/SocialLinks';
 import StoreDemo from './ui/StoreDemo';
 import Lightbox, { type LightboxImage } from './ui/Lightbox';
 import { cn } from '@/lib/cn';
@@ -156,7 +157,13 @@ export default function CaseStudy({ id }: { id: string }) {
   // here and were removed on 2026-09-15: on a case study the reader is here
   // for the work, and a row of platform icons under the brand name sent them
   // off the page. They still sit on every card on /projects.
-  const { other } = splitLinks(study.links, study.brand);
+  //
+  // A case may name ONE platform back in, via `social`, when that account is
+  // itself the evidence — see the field's note in content/case-studies.ts.
+  const { social, other } = splitLinks(study.links, study.brand);
+  const featured = study.social
+    ? social.filter((s) => study.social?.includes(s.platform))
+    : [];
 
   const order = projectsStrip.items.map((p) => p.id);
   const at = order.indexOf(study.id);
@@ -179,6 +186,7 @@ export default function CaseStudy({ id }: { id: string }) {
           </span>
           <SectionTitle>{study.brand}</SectionTitle>
           {study.status && <Chip tone="orange">{t(study.status)}</Chip>}
+          {featured.length > 0 && <SocialLinks links={featured} />}
         </div>
 
         <p className="mt-2 text-sm text-ink-dim md:text-base">{t(study.role)}</p>
