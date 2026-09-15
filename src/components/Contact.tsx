@@ -96,6 +96,21 @@ export default function Contact() {
 
           <p className="font-latin text-xs text-on-dark/60">{t(wordmark)}</p>
         </div>
+
+        {/* Closes the page. Centred and mid-sized on purpose — it is a sign-off,
+            not a second hero, so it sits inside the container's own bottom
+            padding rather than standing on the edge of the viewport. */}
+        <FadeIn className="mt-12 flex justify-center md:mt-16">
+          <img
+            src={footer.photo.src}
+            alt={t(footer.photo.alt)}
+            width={footer.photo.width}
+            height={footer.photo.height}
+            loading="lazy"
+            decoding="async"
+            className="block h-auto w-52 md:w-64 lg:w-72"
+          />
+        </FadeIn>
       </div>
     </footer>
   );

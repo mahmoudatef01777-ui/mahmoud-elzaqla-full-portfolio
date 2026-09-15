@@ -60,7 +60,7 @@ export default function Hero() {
         {/* The one thing a visitor must read. Two lines on desktop. */}
         <motion.h1
           {...rise(0.1)}
-          className="display mt-7 max-w-[var(--display-measure)] text-display-lg text-ink md:mt-9"
+          className="display mt-7 max-w-[var(--display-measure)] text-balance text-display-lg text-ink md:mt-9"
         >
           {headline}
           <span className="text-orange">.</span>

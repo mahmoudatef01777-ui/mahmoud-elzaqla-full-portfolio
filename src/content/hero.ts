@@ -35,13 +35,23 @@ export const hero = {
     en: 'Open to full-time roles',
   } satisfies Localized,
 
+  /*
+    Arabic rewritten 2026-09-15 to position him as more than a media buyer:
+    the first line a visitor reads should say he does not look at Ads Manager
+    in isolation. The trailing full stop is deliberate — Hero.tsx strips it
+    and re-sets it in the accent colour, so the headline must end with one.
+
+    THE ENGLISH IS DELIBERATELY UNTOUCHED, on his instruction, and it still
+    makes the OLD claim. The two languages disagree until he sends the new
+    English line.
+  */
   headline: {
-    ar: 'بدأت من الأوردرات، مش من الإعلانات',
+    ar: 'أنا مش بشوف الإعلان لوحده.',
     en: 'I started with the orders, not the ads.',
   } satisfies Localized,
 
   subline: {
-    ar: 'ببني ستورات Shopify، وبشغّل إعلانات Meta وTikTok، وعيني على الأوردر لحد ما يوصل للعميل.',
+    ar: 'بشوف المنتج، السوق، العميل، الـwebsite، الـoperations والأرقام — وبعدها بشوف الإعلان.',
     en: 'I build Shopify stores, run Meta and TikTok ads, and keep an eye on every order until it reaches the customer.',
   } satisfies Localized,
 
