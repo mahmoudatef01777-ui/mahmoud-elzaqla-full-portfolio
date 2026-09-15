@@ -155,6 +155,32 @@ export const results = {
       },
     },
     {
+      /*
+        Moved out of `compact` on 2026-09-15. It sat there with no figure
+        because there was none to publish; Mahmoud supplied the sales that
+        day, so the row now carries them like every other funded case.
+
+        The headline is the sales, not the door count, because EGP 770,000
+        against EGP 11,000 of spend is the whole point of the case. Both
+        numbers are the owner's, which is what `source` says — nothing here
+        came off a dashboard, unlike the spend beside it.
+      */
+      id: 'dahab-decor',
+      brand: 'Dahab Decor',
+      logo: '/work/dahab-decor/logo.webp',
+      number: { ar: '~EGP 770,000', en: '~EGP 770,000' },
+      numberLabel: {
+        ar: 'مبيعات ~70 باب من كامبين صرفه EGP 11,000',
+        en: 'sales across ~70 doors from an EGP 11,000 campaign',
+      },
+      did: {
+        ar: 'بنيت البنية الإعلانية لمنتج high-ticket ودرّبت الأونرز',
+        en: 'built the ad setup for a high-ticket product and trained the owners',
+      },
+      spend: { ar: 'صرف إعلانات: EGP 11,000', en: 'ad spend: EGP 11,000' },
+      source: { ar: 'رقم تقديري من البيزنس', en: 'Approximate, reported by the business' },
+    },
+    {
       id: 'fakhama',
       brand: 'Fakhama',
       logo: '/work/fakhama/logo.webp',
@@ -198,15 +224,6 @@ export const results = {
       did: {
         ar: 'بنيت البنية الإعلانية وظبطت السوشيال وتجربة العميل',
         en: 'built the ad infrastructure, social presence and customer experience',
-      },
-    },
-    {
-      id: 'dahab-decor',
-      brand: 'Dahab Decor',
-      logo: '/work/dahab-decor/logo.webp',
-      did: {
-        ar: 'بنيت البنية الإعلانية لمنتج high-ticket ودرّبت الأونرز',
-        en: 'built the ad setup for a high-ticket product and trained the owners',
       },
     },
     {
