@@ -28,9 +28,4 @@ export const footer = {
     href: 'https://linkedin.com/in/mahmoudelzaqla',
     label: 'linkedin.com/in/mahmoudelzaqla',
   },
-
-  availability: {
-    ar: 'متاح لوظيفة full-time',
-    en: 'Open to full-time roles',
-  } satisfies Localized,
 };

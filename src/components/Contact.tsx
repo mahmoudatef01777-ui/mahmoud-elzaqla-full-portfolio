@@ -79,11 +79,6 @@ export default function Contact() {
         </div>
 
         <div className="mt-16 flex flex-col gap-6 border-t border-on-dark/15 pt-8 md:mt-20 md:flex-row md:items-center md:justify-between">
-          <p className="flex items-center gap-2 text-xs text-on-dark/60">
-            <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-orange" />
-            {t(footer.availability)}
-          </p>
-
           <nav aria-label={t(wordmark)}>
             <ul className="flex flex-wrap gap-x-6 gap-y-2.5 text-sm">
               {nav.map((item) => (
