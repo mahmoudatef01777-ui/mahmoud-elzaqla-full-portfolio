@@ -181,22 +181,32 @@ export const results = {
       source: { ar: 'رقم تقديري من البيزنس', en: 'Approximate, reported by the business' },
     },
     {
+      /*
+        Led by the sales from 2026-09-16, at Mahmoud's request: from outside,
+        a view count reads as reach and an agency is looking for what the
+        reach did. The 1.5M is still the headline inside the case study.
+
+        The figure is ~120 orders x ~EGP 1,500, and `source` says so — it is
+        the only number on this page that is a multiplication rather than a
+        reading.
+      */
       id: 'fakhama',
       brand: 'Fakhama',
       logo: '/work/fakhama/logo.webp',
-      number: { ar: '1.5M مشاهدة', en: '1.5M views' },
+      number: { ar: '~EGP 180,000', en: '~EGP 180,000' },
       numberLabel: {
-        ar: 'على ريل واحد · 43.6K متابع على TikTok',
-        en: 'on a single reel · 43.6K TikTok followers',
+        ar: 'مبيعات أول كامبين في 4 أيام بصرف EGP 2,650 · 1.5M مشاهدة على TikTok',
+        en: 'sales from the first campaign in 4 days on EGP 2,650 of spend · 1.5M TikTok views',
       },
       did: {
         ar: 'ظبطت البراند وأدرت الكريتيف والتصوير',
         en: 'rebuilt the brand, directed creative and shoots',
       },
-      // No spend line: docs/master-context.md still lists Fakhama's spend and
-      // period as needing verification, and this section promises a source for
-      // every number on it.
-      source: { ar: 'TikTok · 2026', en: 'TikTok · 2026' },
+      // The spend line was blank here until 2026-09-15 because Fakhama's
+      // spend was unverified. It is not any more: the Ad sets screenshot on
+      // the case study shows EGP 1,103.54 + EGP 1,528.02.
+      spend: { ar: 'صرف إعلانات: EGP 2,650', en: 'ad spend: EGP 2,650' },
+      source: { ar: 'تقديري · ~120 أوردر × ~1,500', en: 'Approximate · ~120 orders x ~1,500' },
       image: {
         src: '/work/fakhama/creative-1.webp',
         width: 1536,

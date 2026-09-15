@@ -390,7 +390,7 @@ export const caseStudies: CaseStudy[] = [
           { text: { ar: 'بحث منافسين', en: 'Competitor research' }, by: 'did' },
           { text: { ar: 'كتبت السكريبتات ووجّهت التصوير', en: 'Wrote the scripts and directed the shoots' }, by: 'did' },
           { text: { ar: 'صوّرت وركّبت الريلز ونشرتها', en: 'Shot, edited and published the reels' }, by: 'did' },
-          { text: { ar: 'إعلانات مدفوعة — كانت تست صغير مش حملة كاملة', en: 'Paid ads — a small test, not a full campaign' }, by: 'did' },
+          { text: { ar: 'أول كامبين إعلانية على الحساب، بعد شغل المحتوى', en: 'The first ad campaign on the account, after the content work' }, by: 'did' },
         ],
       },
       {
@@ -430,19 +430,31 @@ export const caseStudies: CaseStudy[] = [
           would sourcing ~120 to Meta.
 
           Ads lead the grid because the ad test is what Mahmoud came back to
-          correct; the content figures follow, which is also how the 5-tile
-          grid wraps (3 + 2) on a desktop.
+          correct; the content figures follow, which is also how the 6-tile
+          grid wraps (3 + 3) on a desktop.
+
+          2026-09-16, from Mahmoud: this was the FIRST campaign on the
+          account, run after a stretch of organic work that showed which
+          product was worth spending on, and the orders came over four days.
+
+          THE SALES TILE IS ARITHMETIC, NOT A REPORTED FIGURE. He gave the
+          order count and the average order value; nobody gave a sales total,
+          so ~120 x ~1,500 is stated on the tile itself rather than presented
+          as something a dashboard said. Two approximate numbers multiplied
+          make a third, looser one — which is why it is the only tile whose
+          source line is a sum.
         */
         facts: [
           { value: '~EGP 2,650', label: { ar: 'صرف إعلانات', en: 'ad spend' }, source: { ar: 'Meta Ads Manager', en: 'Meta Ads Manager' } },
           { value: '~120', label: { ar: 'أوردر', en: 'orders' }, source: { ar: 'رقم من البيزنس', en: 'Reported by the business' }, soft: true },
           { value: '~EGP 1,500', label: { ar: 'متوسط قيمة الأوردر', en: 'average order value' }, source: { ar: 'رقم من البيزنس', en: 'Reported by the business' }, soft: true },
+          { value: '~EGP 180,000', label: { ar: 'مبيعات في 4 أيام', en: 'sales in 4 days' }, source: { ar: '~120 أوردر × ~1,500', en: '~120 orders x ~1,500' }, soft: true },
           { value: '1.5M', label: { ar: 'مشاهدة لأعلى ريل', en: 'views on the top reel' }, source: { ar: 'TikTok', en: 'TikTok' } },
           { value: '43.6K', label: { ar: 'متابع على TikTok', en: 'TikTok followers' }, source: { ar: 'TikTok · عام', en: 'TikTok · public' } },
         ],
         note: {
-          ar: 'الصرف من Meta Ads Manager. عدد الأوردرات ومتوسط قيمتها أرقام من البيزنس نفسه مش من داشبورد — مكانش في ستور، والبيع كله كان ماشي على الرسايل. الداشبورد بتعدّ محادثات، والمحادثة مش أوردر، فالرقمين مش جايين من نفس المصدر ومينفعش يتجمعوا. دي مبيعات مش أرباح، والإعلانات كانت تست صغير جنب المحتوى مش حملة كاملة.',
-          en: 'The spend is from Meta Ads Manager. The order count and the average order value come from the business itself, not from a dashboard — there was no store, and every sale ran through messages. The dashboard counts conversations, and a conversation is not an order, so the two figures do not share a source and cannot be added together. These are sales, not profit, and the ads were a small test alongside the content rather than a full campaign.',
+          ar: 'دي أول كامبين إعلانية على الحساب، وجت بعد فترة شغل أورجانك هي اللي ورّتنا أنهي منتج يستاهل نصرف عليه — يعني الصرف ما ابتداش من تخمين. الصرف نفسه من Meta Ads Manager، لكن عدد الأوردرات ومتوسط قيمتها أرقام من البيزنس مش من داشبورد: مكانش في ستور، والبيع كله كان ماشي على الرسايل. ورقم المبيعات ده حاصل ضرب الاتنين، مش رقم متسجّل. الداشبورد بتعدّ محادثات، والمحادثة مش أوردر، فالرقمين مش من نفس المصدر ومينفعش يتجمعوا. دي مبيعات مش أرباح.',
+          en: 'This was the first ad campaign on the account, and it came after a stretch of organic work that showed which product was worth spending on — so the spend did not start from a guess. The spend itself is from Meta Ads Manager, but the order count and the average order value come from the business rather than a dashboard: there was no store, and every sale ran through messages. The sales figure is those two multiplied, not a recorded total. The dashboard counts conversations, and a conversation is not an order, so the two do not share a source and cannot be added together. These are sales, not profit.',
         },
       },
       {
