@@ -81,7 +81,16 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: reduce ? 0.4 : 0.95, ease: EASE, delay: 0.24 }}
         ref={photoRef}
-        className="relative mt-10 md:mt-12 lg:mt-14"
+        /*
+          MOBILE ONLY: the gap under the description is 4rem, not the 2.5rem
+          it was. The phone composition has a dashboard card within a few
+          pixels of its top edge, so at the old spacing the busiest part of
+          the photograph began right under the last line of copy and the two
+          read as one block. `md:` and `lg:` are unchanged — the desktop
+          composition puts the photo the full width of the viewport under a
+          much wider column of text and never had the problem.
+        */
+        className="relative mt-16 md:mt-12 lg:mt-14"
       >
         <img
           src={hero.image.mobile}
