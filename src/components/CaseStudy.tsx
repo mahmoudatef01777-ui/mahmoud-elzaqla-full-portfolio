@@ -102,7 +102,18 @@ function Section({ s, n, onOpen }: { s: CaseSection; n: number; onOpen: (i: Ligh
           )}
 
           {s.facts && (
-            <dl className="mt-2 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <dl
+              className={cn(
+                'mt-2 grid gap-6 sm:grid-cols-2',
+                // Four tiles is the common case and stays on one row. Five or
+                // six would leave a single tile stranded on a second row under
+                // a four-column grid, so those drop to three columns and wrap
+                // 3 + 2 or 3 + 3 instead. Nothing with four or fewer moves.
+                s.facts.length === 5 || s.facts.length === 6
+                  ? 'lg:grid-cols-3'
+                  : 'lg:grid-cols-4',
+              )}
+            >
               {s.facts.map((f) => (
                 <div key={f.value} className="border-t border-ink/15 pt-3">
                   {/* `num` isolates the value from the Arabic around it.

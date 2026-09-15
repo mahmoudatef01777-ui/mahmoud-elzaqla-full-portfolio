@@ -396,14 +396,35 @@ export const caseStudies: CaseStudy[] = [
       {
         id: 'results',
         title: { ar: 'النتايج', en: 'Results' },
+        /*
+          Rewritten 2026-09-15. This section used to say the ad figures were
+          not publishable because the spend was not confirmed. It now is:
+          Mahmoud's Ad sets screenshot — already published as
+          /work/fakhama/ads-adsets.webp — shows EGP 1,103.54 + EGP 1,528.02,
+          i.e. EGP 2,631.56, which is the "~2,650" he quoted. The spend tile is
+          therefore sourced to Meta, not to him.
+
+          THE ORDER COUNT IS NOT. That same dashboard reports 664 + 2,824 =
+          3,488 MESSAGING CONVERSATIONS, and a conversation is not an order —
+          there was no store on this account, so no platform ever counted an
+          order. The ~120 and the ~1,500 average are the business's own count.
+          Never merge the two: quoting 3,488 as orders would be false, and so
+          would sourcing ~120 to Meta.
+
+          Ads lead the grid because the ad test is what Mahmoud came back to
+          correct; the content figures follow, which is also how the 5-tile
+          grid wraps (3 + 2) on a desktop.
+        */
         facts: [
-          { value: '1.5M', label: { ar: 'مشاهدة لأعلى ريل', en: 'views on the top reel' }, source: { ar: 'TikTok · 2026', en: 'TikTok · 2026' } },
+          { value: '~EGP 2,650', label: { ar: 'صرف إعلانات', en: 'ad spend' }, source: { ar: 'Meta Ads Manager', en: 'Meta Ads Manager' } },
+          { value: '~120', label: { ar: 'أوردر', en: 'orders' }, source: { ar: 'رقم من البيزنس', en: 'Reported by the business' }, soft: true },
+          { value: '~EGP 1,500', label: { ar: 'متوسط قيمة الأوردر', en: 'average order value' }, source: { ar: 'رقم من البيزنس', en: 'Reported by the business' }, soft: true },
+          { value: '1.5M', label: { ar: 'مشاهدة لأعلى ريل', en: 'views on the top reel' }, source: { ar: 'TikTok', en: 'TikTok' } },
           { value: '43.6K', label: { ar: 'متابع على TikTok', en: 'TikTok followers' }, source: { ar: 'TikTok · عام', en: 'TikTok · public' } },
         ],
         note: {
-          // REVIEW
-          ar: 'دي حالة محتوى، مش حالة media buying. عندي أرقام ذاتية لتكلفة الرسالة وتكلفة الأوردر، بس من غير فترة وصرف مؤكدين مش هنشرها كنتيجة.',
-          en: 'This is a content case, not a media buying one. I have self-reported figures for cost per message and cost per order, but without a confirmed period and spend they are not published as results.',
+          ar: 'الصرف من Meta Ads Manager. عدد الأوردرات ومتوسط قيمتها أرقام من البيزنس نفسه مش من داشبورد — مكانش في ستور، والبيع كله كان ماشي على الرسايل. الداشبورد بتعدّ محادثات، والمحادثة مش أوردر، فالرقمين مش جايين من نفس المصدر ومينفعش يتجمعوا. دي مبيعات مش أرباح، والإعلانات كانت تست صغير جنب المحتوى مش حملة كاملة.',
+          en: 'The spend is from Meta Ads Manager. The order count and the average order value come from the business itself, not from a dashboard — there was no store, and every sale ran through messages. The dashboard counts conversations, and a conversation is not an order, so the two figures do not share a source and cannot be added together. These are sales, not profit, and the ads were a small test alongside the content rather than a full campaign.',
         },
       },
       {
@@ -486,17 +507,27 @@ export const caseStudies: CaseStudy[] = [
           doors split into ~40 the campaign sold directly plus ~30 that came
           with one deal it brought in. The old single "~70-100" range hid that
           split, and the old "~EGP 7K" spend was wrong.
+
+          2026-09-15, also from Mahmoud: those doors are about EGP 770,000 of
+          SALES. That is the outcome the reader is here for, so it takes the
+          fourth tile and the ad cost per door moves down into the note, which
+          already worked that division out in full. Nothing was recalculated
+          to make room — the note still carries both the 275 and the 157.
+
+          The figure is the owner's, not a dashboard's, and it is the only
+          number on this page that is not either ad-platform spend or a count
+          Mahmoud watched happen. It stays marked approximate for that reason.
         */
         facts: [
           { value: '~40', label: { ar: 'باب اتباع من الكامبين مباشرة', en: 'doors sold by the campaign directly' }, source: { ar: 'رقم تقديري', en: 'Approximate' }, soft: true },
           { value: '+~30', label: { ar: 'باب زيادة من صفقة جات من الكامبين', en: 'more doors from one deal the campaign brought in' }, source: { ar: 'رقم تقديري', en: 'Approximate' }, soft: true },
           { value: 'EGP 11,000', label: { ar: 'صرف إعلانات', en: 'ad spend' }, source: { ar: 'صرف الكامبين', en: 'Campaign spend' } },
-          { value: '~EGP 275', label: { ar: 'تكلفة إعلانية للباب', en: 'ad cost per door' }, source: { ar: '11,000 ÷ 40 باب', en: '11,000 ÷ 40 doors' }, soft: true },
+          { value: '~EGP 770,000', label: { ar: 'مبيعات من الكامبين', en: 'sales from the campaign' }, source: { ar: 'رقم تقديري', en: 'Approximate' }, soft: true },
         ],
         note: {
           // REVIEW
-          ar: 'عدد الأبواب تقديري. التكلفة للباب محسوبة على الـ 40 باب اللي الكامبين باعهم مباشرة بس؛ لو حسبنا معاهم الـ 30 اللي جوّا الصفقة، بتنزل لحوالي 157 جنيه للباب. في أرقام أقدم متضاربة معاها ومش بستخدمها.',
-          en: 'The door counts are approximate. The cost per door is calculated on the 40 doors the campaign sold directly; counting the 30 inside the deal as well, it works out around EGP 157. There are older, conflicting figures that I do not use.',
+          ar: 'عدد الأبواب والمبيعات أرقام تقديرية من صاحب البيزنس، وبتغطي الـ 70 باب كلهم — الـ 40 المباشرين والـ 30 اللي جوّا الصفقة. دي مبيعات، مش أرباح. التكلفة الإعلانية للباب حوالي 275 جنيه لو حسبناها على الـ 40 المباشرين بس، وبتنزل لحوالي 157 جنيه لو حسبنا الـ 70 كلهم. في أرقام أقدم متضاربة معاها ومش بستخدمها.',
+          en: 'The door counts and the sales figure are the owner\'s own, approximate, and cover all 70 doors — the 40 the campaign sold directly and the 30 inside the deal. These are sales, not profit. Ad cost per door is about EGP 275 against the 40 direct doors alone, and about EGP 157 counting all 70. There are older, conflicting figures that I do not use.',
         },
       },
     ],

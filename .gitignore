@@ -10,3 +10,6 @@ tsconfig.tsbuildinfo
 # They are review artefacts, not part of the site, and they are large.
 shots-*/
 shots/
+
+# Local dev-server config for the Claude preview pane.
+.claude/
