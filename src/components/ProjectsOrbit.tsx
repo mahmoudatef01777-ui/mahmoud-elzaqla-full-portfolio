@@ -71,9 +71,30 @@ export default function ProjectsOrbit() {
   const cellRefs = useRef<(HTMLLIElement | null)[]>([]);
   const angleRef = useRef(Math.PI / 2); // start with the first project at the front
   const pausedRef = useRef(false);
+  /**
+   * Whether the ring is anywhere near the viewport.
+   *
+   * It starts false. The section sits most of a page below the fold, and
+   * before 2026-09-15 the loop ran from the moment the app mounted — writing
+   * transforms onto ten elements sixty times a second while the visitor was
+   * still reading the hero, and before they had scrolled far enough to ever
+   * see it. That was most of the page's style-and-layout cost in a Lighthouse
+   * run, spent on something nobody was looking at.
+   */
+  const visibleRef = useRef(false);
+  /** Last z-index written per cell, so an unchanged one is not re-written. */
+  const zRef = useRef<number[]>([]);
 
-  /** Ellipse radii in px, recomputed from the box width. */
-  const [radii, setRadii] = useState({ rx: 320, ry: 96 });
+  /**
+      * Ellipse radii and the ring's vertical offset, in px.
+      *
+      * `shift` lives here, measured once per resize, and NOT read inside the
+      * animation loop. Reading `clientHeight` per frame — which is what this
+      * used to do — forces a synchronous layout flush after the previous
+      * frame's writes, and turns a ten-element ring into a full reflow sixty
+      * times a second.
+      */
+  const [radii, setRadii] = useState({ rx: 320, ry: 96, shift: 0 });
 
   /* The ellipse is wide and shallow on a desktop — a ring seen at an angle —
      and rounder on a phone, where a shallow one would stack every logo onto
@@ -85,18 +106,35 @@ export default function ProjectsOrbit() {
       const w = box.clientWidth;
       // Shallow on purpose: the brands orbit around him, not over him.
       const rx = Math.min(w * 0.46, 420);
-      setRadii({ rx, ry: rx * (w < 640 ? 0.36 : 0.17) });
+      setRadii({
+        rx,
+        ry: rx * (w < 640 ? 0.36 : 0.17),
+        shift: box.clientHeight * RING_SHIFT,
+      });
     };
     measure();
     const ro = new ResizeObserver(measure);
     ro.observe(box);
-    return () => ro.disconnect();
+
+    // `rootMargin` starts it a little before it scrolls in, so the ring is
+    // already turning rather than snapping to life at the edge of the screen.
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        visibleRef.current = entry.isIntersecting;
+      },
+      { rootMargin: '200px 0px' },
+    );
+    io.observe(box);
+
+    return () => {
+      ro.disconnect();
+      io.disconnect();
+    };
   }, []);
 
   /** Writes every cell's transform for the current angle. */
   const layout = useCallback(() => {
-    const { rx, ry } = radii;
-    const shift = (boxRef.current?.clientHeight ?? 0) * RING_SHIFT;
+    const { rx, ry, shift } = radii;
     for (let i = 0; i < count; i += 1) {
       const el = cellRefs.current[i];
       if (!el) continue;
@@ -109,8 +147,15 @@ export default function ProjectsOrbit() {
         Math.sin(theta) * ry + shift
       }px - 50%), 0) scale(${scale})`;
       el.style.opacity = String(OPACITY_BACK + (1 - OPACITY_BACK) * depth);
-      el.style.zIndex = String(Math.round(depth * 100));
 
+      // z-index only when it actually changes: transform and opacity are
+      // composited, but a z-index write re-orders the stacking context and
+      // costs a style recalculation every time.
+      const z = Math.round(depth * 100);
+      if (zRef.current[i] !== z) {
+        zRef.current[i] = z;
+        el.style.zIndex = String(z);
+      }
     }
   }, [count, radii]);
 
@@ -119,7 +164,7 @@ export default function ProjectsOrbit() {
   useEffect(layout, [layout]);
 
   useAnimationFrame((_, delta) => {
-    if (reduce || pausedRef.current) return;
+    if (reduce || pausedRef.current || !visibleRef.current) return;
     // Guard against the tab being backgrounded: a long delta would jump the
     // ring rather than animate it.
     angleRef.current += (Math.min(delta, 50) / 1000) * SPEED;

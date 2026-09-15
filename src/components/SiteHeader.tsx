@@ -3,6 +3,16 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Menu, X } from 'lucide-react';
 import { useLang } from '@/i18n/LanguageProvider';
 import { monogram, shellCta, shellNav, ui } from '@/content';
+
+/**
+ * Only the pages that exist. `shellNav` carries `ready: false` for routes
+ * that were planned and never built — Services, Blog, Contact — and before
+ * 2026-09-15 the flag was declared and then ignored, so the header shipped
+ * three links to pages the router does not serve. A nav item that goes
+ * nowhere is worse than one that is absent, so they are filtered out here
+ * rather than rendered and disabled.
+ */
+const NAV = shellNav.filter((item) => item.ready);
 import { cn } from '@/lib/cn';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -59,7 +69,7 @@ export default function SiteHeader({ current }: { current?: string }) {
           aria-label={t(ui.menu)}
           className="hidden flex-1 items-center justify-center gap-8 lg:flex xl:gap-11"
         >
-          {shellNav.map((item) => {
+          {NAV.map((item) => {
             const active = item.route === current;
             return (
               <a
@@ -121,7 +131,7 @@ export default function SiteHeader({ current }: { current?: string }) {
             </div>
 
             <nav aria-label={t(ui.menu)} className="container-page mt-6 flex flex-col">
-              {shellNav.map((item, i) => (
+              {NAV.map((item, i) => (
                 <motion.a
                   key={item.route}
                   href={href(item.route)}

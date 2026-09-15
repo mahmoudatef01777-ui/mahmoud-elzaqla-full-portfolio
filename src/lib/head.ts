@@ -1,0 +1,70 @@
+import { useEffect } from 'react';
+import { seoFor } from '@/content/seo';
+import type { Lang } from '@/i18n/config';
+
+/**
+ * Keeps <title>, the description, the canonical link and the hreflang pair in
+ * step with the route and the language.
+ *
+ * WHY THIS IS NOT ENOUGH ON ITS OWN, and why index.html still carries a full
+ * card: WhatsApp and LinkedIn read the raw HTML and never run the app, so the
+ * preview for every url on the site comes from the static tags. What this
+ * hook fixes is everything that DOES see the rendered page — the browser tab,
+ * a bookmark, a shared screenshot of the tab bar, and Google, which renders.
+ *
+ * It also writes og:title / og:description / og:url, which costs nothing and
+ * is correct for any scraper that renders. It deliberately does NOT touch
+ * og:image: that file is fixed for the whole site and index.html owns it.
+ */
+
+const ORIGIN = 'https://mahmoudelzaqla.com';
+
+function meta(selector: string, attr: 'name' | 'property', key: string, content: string) {
+  let el = document.head.querySelector<HTMLMetaElement>(selector);
+  if (!el) {
+    el = document.createElement('meta');
+    el.setAttribute(attr, key);
+    document.head.appendChild(el);
+  }
+  el.setAttribute('content', content);
+}
+
+function link(rel: string, href: string, hreflang?: string) {
+  const sel = hreflang
+    ? `link[rel="${rel}"][hreflang="${hreflang}"]`
+    : `link[rel="${rel}"]:not([hreflang])`;
+  let el = document.head.querySelector<HTMLLinkElement>(sel);
+  if (!el) {
+    el = document.createElement('link');
+    el.rel = rel;
+    if (hreflang) el.hreflang = hreflang;
+    document.head.appendChild(el);
+  }
+  el.href = href;
+}
+
+export function useHead(route: string, lang: Lang) {
+  useEffect(() => {
+    const { title, description } = seoFor(route, lang);
+    document.title = title;
+
+    meta('meta[name="description"]', 'name', 'description', description);
+    meta('meta[property="og:title"]', 'property', 'og:title', title);
+    meta('meta[property="og:description"]', 'property', 'og:description', description);
+    meta('meta[name="twitter:title"]', 'name', 'twitter:title', title);
+    meta('meta[name="twitter:description"]', 'name', 'twitter:description', description);
+
+    const path = route === '/' ? '' : route;
+    const arUrl = `${ORIGIN}${path || '/'}`;
+    const enUrl = `${ORIGIN}/en${path}`;
+    const self = lang === 'en' ? enUrl : arUrl;
+
+    meta('meta[property="og:url"]', 'property', 'og:url', self);
+    meta('meta[property="og:locale"]', 'property', 'og:locale', lang === 'ar' ? 'ar_EG' : 'en_US');
+    link('canonical', self);
+    // Arabic is the default, so it is also x-default.
+    link('alternate', arUrl, 'ar');
+    link('alternate', enUrl, 'en');
+    link('alternate', arUrl, 'x-default');
+  }, [route, lang]);
+}

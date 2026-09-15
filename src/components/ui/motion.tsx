@@ -75,7 +75,10 @@ export function FadeIn({
 export function RevealText({
   text,
   className,
-  dim = 0.2,
+  // The floor is a CONTRAST floor, not a taste one: a word sits at this
+  // opacity until the scroll reaches it, and below about 0.6 the blend
+  // against the page drops under 4.5:1.
+  dim = 0.62,
 }: {
   text: string;
   className?: string;

@@ -11,7 +11,9 @@
     "assets": "node scripts/optimize-assets.mjs",
     "shoot": "node scripts/shoot.mjs",
     "stores": "node scripts/refresh-stores.mjs",
-    "check:hero": "node scripts/check-hero-contrast.mjs"
+    "check:hero": "node scripts/check-hero-contrast.mjs",
+    "og": "node scripts/make-og.mjs",
+    "audit": "node scripts/audit.mjs"
   },
   "dependencies": {
     "framer-motion": "^11.11.17",

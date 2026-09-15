@@ -1,3 +1,4 @@
+import { Suspense, lazy, type ComponentType } from 'react';
 import Nav from '@/components/Nav';
 import Hero from '@/components/Hero';
 import Tools from '@/components/Tools';
@@ -9,14 +10,34 @@ import ProjectsOrbit from '@/components/ProjectsOrbit';
 import WhyMe from '@/components/WhyMe';
 import WhatsNext from '@/components/WhatsNext';
 import Contact from '@/components/Contact';
-import BackgroundPage from '@/components/BackgroundPage';
-import BloomyCase from '@/components/BloomyCase';
-import CaseStudy from '@/components/CaseStudy';
-import Projects from '@/components/Projects';
-import AboutPage from '@/components/about/AboutPage';
-import LandingPage from '@/components/landing/LandingPage';
+/*
+  EVERY ROUTE EXCEPT THE HOME PAGE IS LOADED ON DEMAND.
+
+  This is a client-rendered app: nothing paints until the bundle has been
+  fetched, parsed and executed, so every byte in the entry chunk is time
+  before the visitor sees anything. The home page is what a link from a CV or
+  a DM lands on; the case studies, the projects list, the background, the
+  about page and the landing page are all a click further in, and there is no
+  reason for their code to be in the way of the first paint.
+
+  Each of these becomes its own chunk. React resolves them while <Suspense/>
+  holds the frame at the right height, so nothing jumps.
+*/
+const BackgroundPage = lazy(() => import('@/components/BackgroundPage'));
+const BloomyCase = lazy(() => import('@/components/BloomyCase'));
+const CaseStudy = lazy(() => import('@/components/CaseStudy'));
+const Projects = lazy(() => import('@/components/Projects'));
+const AboutPage = lazy(() => import('@/components/about/AboutPage'));
+const LandingPage = lazy(() => import('@/components/landing/LandingPage'));
+
+/** Holds the page's place while its chunk arrives. Deliberately blank: a
+ *  spinner for a fetch this short is more distracting than empty space. */
+function Pending() {
+  return <div className="min-h-[70vh]" aria-busy="true" />;
+}
 import { caseStudies } from '@/content';
 import { useLang } from '@/i18n/LanguageProvider';
+import { useHead } from '@/lib/head';
 
 /**
  * Home page architecture:
@@ -62,7 +83,7 @@ function Home() {
   );
 }
 
-const ROUTES: Record<string, () => JSX.Element> = {
+const ROUTES: Record<string, ComponentType> = {
   '/projects': Projects,
   '/background': BackgroundPage,
   '/work/bloomy': BloomyCase,
@@ -78,24 +99,36 @@ const ROUTES: Record<string, () => JSX.Element> = {
  * header and footer, so they render outside the older Nav/Contact chrome.
  * The list grows as each page is converted.
  */
-const STANDALONE: Record<string, () => JSX.Element> = {
+const STANDALONE: Record<string, ComponentType> = {
   '/about': AboutPage,
   // The one-page landing, built section by section from 2026-09-15.
   '/landing': LandingPage,
 };
 
 export default function App() {
-  const { route } = useLang();
+  const { route, lang } = useLang();
+
+  // Title, description, canonical and the hreflang pair. See lib/head.ts for
+  // why index.html still carries a full sharing card of its own.
+  useHead(route, lang);
 
   const Standalone = STANDALONE[route];
-  if (Standalone) return <Standalone />;
+  if (Standalone) {
+    return (
+      <Suspense fallback={<Pending />}>
+        <Standalone />
+      </Suspense>
+    );
+  }
 
   const Page = ROUTES[route] ?? Home;
   return (
     <>
       <Nav />
       <main id="main">
-        <Page />
+        <Suspense fallback={<Pending />}>
+          <Page />
+        </Suspense>
       </main>
       <Contact />
     </>

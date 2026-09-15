@@ -32,9 +32,14 @@ function Evidence({ item, onOpen }: { item: CaseEvidence; onOpen: (i: LightboxIm
     return (
       <figure className="overflow-hidden rounded-card border border-ink/10 bg-cream">
         {playing ? (
+          /* Mounted only after the click, so nothing is fetched until it is
+             asked for. Muted is what lets autoPlay run at all; the reader
+             turns sound on from the controls. */
           <video
             src={item.src}
             poster={item.poster}
+            width={item.width}
+            height={item.height}
             controls
             autoPlay
             muted
@@ -51,6 +56,8 @@ function Evidence({ item, onOpen }: { item: CaseEvidence; onOpen: (i: LightboxIm
             <img
               src={item.poster}
               alt={t(item.alt)}
+              width={item.width}
+              height={item.height}
               loading="lazy"
               decoding="async"
               className="mx-auto block max-h-[32rem] w-auto"

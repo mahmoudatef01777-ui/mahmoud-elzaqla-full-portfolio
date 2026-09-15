@@ -75,8 +75,8 @@ export const landingHero = {
    */
   photo: {
     src: '/work/personal/hero-cutout.webp',
-    width: 1440,
-    height: 1806,
+    width: 1000,
+    height: 1254,
     /**
      * A CEILING on how much of the hero's height the figure may fill,
      * bottom-anchored. From lg the portrait is actually sized by its width

@@ -33,7 +33,7 @@ export default function Positioning() {
           <RevealText
             text={t(positioning.statement.lead)}
             className="display max-w-[34ch] text-[calc(clamp(1.5rem,4.2vw,3.25rem)*var(--display-scale))] leading-[var(--statement-leading)] text-ink"
-            dim={0.3}
+            dim={0.62}
           />
           {/*
             Set in ink, not the accent. The accent is reserved for dots,
@@ -46,7 +46,7 @@ export default function Positioning() {
           <RevealText
             text={t(positioning.statement.accent)}
             className="display mt-2 max-w-[34ch] text-[calc(clamp(1.5rem,4.2vw,3.25rem)*var(--display-scale))] leading-[var(--statement-leading)] text-ink"
-            dim={0.32}
+            dim={0.62}
           />
         </div>
 

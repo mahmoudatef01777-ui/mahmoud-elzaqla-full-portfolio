@@ -49,10 +49,19 @@ export default function Hero() {
     <section className="relative overflow-hidden pb-12 pt-4 md:pt-8 lg:pb-20">
       {/* ----------------------------------------------------------- photo */}
 
-      <motion.div
-        initial={reduce ? { opacity: 0 } : { opacity: 0, y: 26 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: reduce ? 0.4 : 0.95, ease: EASE, delay: 0.04 }}
+      {/*
+        NO ENTRANCE ANIMATION ON THIS ELEMENT, deliberately.
+
+        The photograph is the largest thing on the first screen, which makes
+        it the LCP element — and an LCP element that fades up from opacity 0
+        does not count as painted until the fade finishes. With the 0.95s rise
+        this used to carry, Lighthouse measured 6.1s of "render delay" on a
+        throttled phone for an image that had already finished downloading.
+
+        The copy below still rises. This does not: it is the thing the visitor
+        came to see, and it should be there.
+      */}
+      <div
         ref={photoRef}
         /*
           No top margin: the photograph is the first thing in the section now,
@@ -89,7 +98,7 @@ export default function Hero() {
         </div>
         {/* Dissolve the bottom edge of the frame into the page. */}
         <div aria-hidden className="hero-blend-b pointer-events-none absolute inset-x-0 bottom-0 h-24 lg:h-32" />
-      </motion.div>
+      </div>
 
       {/*
         THE COPY SITS UNDER THE PHOTOGRAPH, and it used to sit above it.
