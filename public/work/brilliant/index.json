@@ -1,0 +1,44 @@
+[
+  {
+    "src": "/work/brilliant/creative-1.webp",
+    "type": "image",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "src": "/work/brilliant/logo.webp",
+    "type": "image",
+    "width": 1200,
+    "height": 1200
+  },
+  {
+    "src": "/work/brilliant/website-1.webp",
+    "type": "image",
+    "width": 398,
+    "height": 817
+  },
+  {
+    "src": "/work/brilliant/website-2.webp",
+    "type": "image",
+    "width": 401,
+    "height": 797
+  },
+  {
+    "src": "/work/brilliant/website-3.webp",
+    "type": "image",
+    "width": 396,
+    "height": 747
+  },
+  {
+    "src": "/work/brilliant/website-4.webp",
+    "type": "image",
+    "width": 396,
+    "height": 807
+  },
+  {
+    "src": "/work/brilliant/website-5.webp",
+    "type": "image",
+    "width": 431,
+    "height": 470
+  }
+]

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#F4F1E8" />
+    <title>محمود عاطف — E-commerce Growth Specialist</title>
+    <meta
+      name="description"
+      content="محمود عاطف — E-commerce Growth Specialist. Shopify، إعلانات الأداء، وتشغيل العمليات."
+    />
+
+    <!--
+      Theme before first paint. Without this the page renders light and then
+      snaps to dark on hydration, which is worse than no dark mode at all.
+      Keep the key and the attribute in step with src/lib/theme.ts.
+    -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('theme');
+          var dark =
+            saved === 'dark' ||
+            (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+          if (dark) {
+            var m = document.querySelector('meta[name="theme-color"]');
+            if (m) m.setAttribute('content', '#14120F');
+          }
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Brand identity v3: Archivo (Latin) + IBM Plex Sans Arabic (Arabic)
+         plus Caveat for the hand-written marginalia. -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Caveat:wght@500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preload" as="image" href="/work/personal/hero-mobile.webp" media="(max-width: 1023px)" />
+    <link rel="preload" as="image" href="/work/personal/hero-desktop.webp" media="(min-width: 1024px)" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

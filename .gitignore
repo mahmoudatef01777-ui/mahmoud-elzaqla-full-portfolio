@@ -1,0 +1,12 @@
+node_modules
+dist
+.vite
+*.local
+.DS_Store
+.vercel
+tsconfig.tsbuildinfo
+
+# Working screenshots from scripts/shoot.mjs and the review passes.
+# They are review artefacts, not part of the site, and they are large.
+shots-*/
+shots/

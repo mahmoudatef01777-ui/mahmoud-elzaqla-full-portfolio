@@ -1,0 +1,721 @@
+@import './tokens.css';
+@import './fonts.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-cream text-ink font-body antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    @apply bg-orange text-cream;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ink ring-offset-2 ring-offset-cream;
+  }
+
+  /* Latin numerals everywhere, including inside Arabic copy. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  /* Display type. Case, weight and leading come from the active pairing so
+     Arabic (which has no uppercase) is handled by the same class. */
+  .display {
+    font-family: var(--font-display);
+    font-weight: var(--display-weight);
+    letter-spacing: var(--display-tracking);
+    text-transform: var(--display-case);
+    line-height: var(--display-leading);
+  }
+
+  .container-page {
+    @apply mx-auto w-full max-w-page px-gutter;
+  }
+
+  /**
+   * A block that starts where its grid column starts and runs out to the
+   * viewport edge — the About hero photograph. The bleed is the page gutter
+   * plus whatever margin the centred container leaves beside it, so the
+   * block touches the edge at every width. 100vw counts the scrollbar, so
+   * the section that holds it clips the overflow rather than scrolling.
+   */
+  .bleed-end {
+    --bleed: calc(var(--gutter) + max(0px, (100vw - 86rem) / 2));
+    margin-inline-end: calc(var(--bleed) * -1);
+    width: calc(100% + var(--bleed));
+  }
+  .bleed-clip {
+    overflow-x: clip;
+  }
+
+  /**
+   * Washes that fade the portrait into the page, so the hand-written notes
+   * and the name plate stay readable over the photograph. Direction-aware:
+   * the note is always on the reading-start side.
+   *
+   * They fade to --c-cream, the PAGE colour, not to a literal white: a fixed
+   * white wash painted a bright veil over the photo in dark mode.
+   */
+  .photo-wash-s {
+    background: linear-gradient(
+      to right,
+      rgb(var(--c-cream) / 0.86) 0%,
+      rgb(var(--c-cream) / 0.42) 28%,
+      transparent 56%
+    );
+  }
+  :root[dir='rtl'] .photo-wash-s {
+    background: linear-gradient(
+      to left,
+      rgb(var(--c-cream) / 0.86) 0%,
+      rgb(var(--c-cream) / 0.42) 28%,
+      transparent 56%
+    );
+  }
+  .photo-wash-b {
+    background: linear-gradient(
+      to top,
+      rgb(var(--c-cream) / 0.95) 0%,
+      rgb(var(--c-cream) / 0.78) 32%,
+      rgb(var(--c-cream) / 0.34) 66%,
+      transparent 100%
+    );
+  }
+
+  /**
+   * Hand-written marginalia. Caveat sits small on its em, so it is set
+   * larger than the copy around it and stacked tight — the reference writes
+   * these notes as short broken lines, not paragraphs.
+   */
+  .hand {
+    font-family: var(--font-hand);
+    font-weight: 600;
+    line-height: 0.98;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  :root[lang='ar'] .hand {
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  /**
+   * Display type for the reference design: heavier and tighter than the
+   * shared .display, because the About headline is the largest type on
+   * the page and carries the composition.
+   */
+  .display-hero {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.034em;
+    line-height: 0.98;
+    font-size: calc(clamp(2.25rem, 5.3vw, 4.75rem) * var(--display-scale));
+  }
+  :root[lang='ar'] .display-hero {
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1.28;
+  }
+
+  /* Small letterspaced metadata. Arabic has no uppercase, so the transform
+     is applied per script rather than baked into the class. */
+  .label {
+    @apply text-[0.6875rem] font-semibold tracking-[0.16em] text-ink-dim;
+  }
+  :root[lang='en'] .label {
+    text-transform: uppercase;
+  }
+  :root[lang='ar'] .label {
+    @apply tracking-normal;
+  }
+
+  /* The accent dot that opens every section label. */
+  .eyebrow {
+    @apply flex items-center gap-2.5;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply block h-[0.4rem] w-[0.4rem] shrink-0 rounded-full bg-orange;
+  }
+
+  /**
+   * A number set inside Arabic copy. Without the isolation the bidi
+   * algorithm reorders the run: "~3,000-5,000" renders as "5,000-3,000~",
+   * which reverses the range and is simply wrong. Use it on any value that
+   * carries punctuation, a prefix or a unit.
+   */
+  .num {
+    direction: ltr;
+    unicode-bidi: isolate;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Body copy at the one size the page uses for paragraphs. */
+  .lede {
+    @apply text-[1.0625rem] leading-[1.7] text-ink-dim md:text-lg md:leading-[1.75];
+  }
+
+  /**
+   * A round plate for a brand logo, wherever one appears in a list.
+   *
+   * Same rule as the orbit's chips: no plate and no ring in light mode,
+   * because the page is white and --c-paper is white, so all the chip ever
+   * drew was a grey hairline around every mark. Dark mode keeps it — most of
+   * these logos are dark art on white and would vanish without a light disc.
+   */
+  .logo-chip {
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 9999px;
+    border: 1px solid transparent;
+  }
+  :root[data-theme='dark'] .logo-chip {
+    border-color: rgb(var(--c-line));
+    background: rgb(var(--c-paper));
+  }
+
+  /**
+   * Social icons with no ring, for lists where a row of bordered circles was
+   * the loudest thing in the row. Same light/dark rule as the logo chips: the
+   * ring only earns its place when the page behind it is dark.
+   */
+  .socials-plain a {
+    border-color: transparent;
+  }
+  :root[data-theme='dark'] .socials-plain a {
+    border-color: rgb(var(--c-line));
+  }
+
+  /**
+   * Projects orbit.
+   *
+   * The ring is one absolutely-positioned list centred in a box; every cell's
+   * transform is written by ProjectsOrbit.tsx on each frame, so nothing here
+   * animates on its own. What CSS owns is the box, the chip and the states —
+   * size, border, the brand tint on hover, and the centre label's crossfade.
+   *
+   * The box height is driven by --orbit-ry, the ellipse's vertical radius,
+   * which the component measures from the container. Hard-coding a height
+   * would clip the ring on a phone and leave a hole on a wide screen.
+   */
+  .orbit {
+    position: relative;
+    /* Tall enough for the figure in the middle, not just for the ring. */
+    height: 19rem;
+    /* The cells are transformed, not laid out, so they cannot push the box
+       wider; nothing here can cause a horizontal scrollbar. */
+    overflow: hidden;
+  }
+
+  .orbit-ring {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .orbit-cell {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* The transform carries its own -50% offsets, so the cell centres on the
+       point rather than hanging off it. */
+    will-change: transform, opacity;
+  }
+
+  /**
+   * No plate and no ring in light mode: the page is white and --c-paper is
+   * white, so the only thing the chip ever drew was a grey hairline around
+   * every logo. The mark stands on the page by itself.
+   *
+   * Dark mode keeps the plate — see below. There it is not decoration: most
+   * of these logos are dark marks on white, and without a light disc behind
+   * them they would vanish into the page.
+   */
+  .orbit-item {
+    display: grid;
+    place-items: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 9999px;
+    border: 1px solid transparent;
+    transition:
+      border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .orbit-item img {
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 9999px;
+    object-fit: contain;
+  }
+  /* The only ring on the page, and only while the pointer is on it. */
+  .orbit-item:hover,
+  .orbit-item:focus-visible {
+    box-shadow: 0 0 0 1.5px var(--brand);
+    outline: none;
+  }
+
+  :root[data-theme='dark'] .orbit-item {
+    border-color: rgb(var(--c-line));
+    background: rgb(var(--c-paper));
+  }
+  :root[data-theme='dark'] .orbit-item:hover,
+  :root[data-theme='dark'] .orbit-item:focus-visible {
+    border-color: var(--brand);
+  }
+
+  @media (min-width: 768px) {
+    .orbit {
+      height: 23rem;
+    }
+    .orbit-photo {
+      height: 92%;
+    }
+    .orbit-item {
+      width: 5.25rem;
+      height: 5.25rem;
+    }
+    .orbit-item img {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+
+  /**
+   * The sun: Mahmoud, cut out, dead centre.
+   *
+   * z-index 50 is exactly half the depth range the component writes onto the
+   * cells (0-100), which is what makes the far half of the ring pass behind
+   * him and the near half pass in front. Changing it breaks the illusion.
+   *
+   * Bottom-aligned so he stands on the section's baseline rather than
+   * floating; the ring is shifted down in the component so the sweep crosses
+   * his chest and never his face.
+   */
+  .orbit-photo {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    z-index: 50;
+    transform: translateX(-50%);
+    height: 78%;
+    width: auto;
+    object-fit: contain;
+    pointer-events: none;
+    user-select: none;
+    /* The cut-out ends in a straight line across his torso. Fading the last
+       fifth of it dissolves that edge into the page instead of leaving a
+       rectangle floating in the middle of the section. */
+    -webkit-mask-image: linear-gradient(to top, transparent 0, #000 20%);
+    mask-image: linear-gradient(to top, transparent 0, #000 20%);
+  }
+
+  /**
+   * Projects marquee. The track holds the list twice and slides by half its
+   * width, so the seam never shows. Arabic reverses the direction, hover
+   * slows it rather than stopping dead, and reduced motion turns the whole
+   * thing into a plain scroller.
+   */
+  .strip {
+    /* hidden, not auto: in RTL an auto-scrolling box puts its scroll origin
+       on the right, which fought the translate and pushed the whole track
+       off-screen. Reduced motion turns it back into a real scroller below. */
+    overflow: hidden;
+    scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+  }
+  .strip::-webkit-scrollbar {
+    display: none;
+  }
+
+  .strip-track {
+    display: flex;
+    align-items: stretch;
+    gap: 1rem;
+    width: max-content;
+    padding-inline: var(--gutter);
+    margin: 0;
+    list-style: none;
+    animation: strip-slide 46s linear infinite;
+    /* The track slides toward the reading direction: left in English,
+       right in Arabic. transform is not direction-aware, so the sign is. */
+    --strip-dir: -1;
+  }
+  @media (min-width: 768px) {
+    .strip-track {
+      gap: 1.5rem;
+    }
+  }
+
+  :root[dir='rtl'] .strip-track {
+    --strip-dir: 1;
+  }
+
+  /* Pausing is driven by the component, not by `.strip:hover`: hovering the
+     band's empty space must not stop it, only hovering an actual plate.
+     `animation-play-state` freezes and resumes at the exact same offset, so
+     the plate under the cursor cannot slide away mid-click. */
+
+  @keyframes strip-slide {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(var(--strip-dir) * 50%));
+    }
+  }
+
+  /* One project: a wide plate, not a rounded card — the identity avoids
+     pill-shaped everything, so the corners are barely there. */
+  .strip-item {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 0.75rem 1.375rem 0.75rem 0.75rem;
+    border: 1px solid rgb(var(--c-line));
+    border-radius: 0.75rem;
+    background: rgb(var(--c-soft));
+    text-decoration: none;
+    transition:
+      border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      background-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  :root[dir='rtl'] .strip-item {
+    padding: 0.75rem 0.75rem 0.75rem 1.375rem;
+  }
+  .strip-item:hover {
+    transform: translateY(-3px);
+    border-color: rgb(var(--c-orange));
+    background: rgb(var(--c-paper));
+  }
+
+  .strip-logo {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    flex: none;
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    background: rgb(var(--c-paper));
+    border: 1px solid rgb(var(--c-line) / 0.7);
+    overflow: hidden;
+  }
+  @media (min-width: 768px) {
+    .strip-logo {
+      width: 3.5rem;
+      height: 3.5rem;
+    }
+  }
+  .strip-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 0.375rem;
+  }
+
+  .strip-name {
+    @apply text-ink;
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    /* Colour only. Size, weight and spacing are identical in both states. */
+    transition: color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Each plate carries its own brand colour in --brand (brand-colors.ts). */
+  .strip-item:hover .strip-name,
+  .strip-item:focus-visible .strip-name {
+    color: var(--brand);
+  }
+
+  .strip-role {
+    @apply text-ink-dim;
+    display: block;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    margin-top: 0.1rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .strip {
+      overflow-x: auto;
+    }
+    .strip-track {
+      animation: none;
+    }
+  }
+
+  /**
+   * Liquid fill button.
+   *
+   * The fill is a single block parked just below the button and translated up
+   * on hover, with an SVG wave sitting on its top edge; the wave is twice the
+   * button's width and holds two periods, so sliding it by half its width
+   * loops seamlessly and the surface appears to move on its own.
+   *
+   * Only transform and colour animate. The button's box, radius, padding,
+   * type and arrow are untouched, and the fill is clipped by overflow, so the
+   * effect cannot shift a single pixel of layout.
+   *
+   * The label colour is held until the surface has actually covered it
+   * (transition-delay on hover, none on the way out, so draining reads right).
+   */
+  .btn-liquid {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    /* Draining: hold the label light until the surface has fallen past it. */
+    transition: color 0.2s ease-out 0.12s;
+
+    /**
+     * The fill, and the label colour once the fill has covered it. Defaults
+     * are ink-on-page, which is what every button on a light surface wants.
+     * Override per button for a different fill — the footer's WhatsApp CTA
+     * sets them to WhatsApp green with a near-black label.
+     *
+     * Whatever you set, the pair must clear 4.5:1 against each other.
+     */
+    --liquid-fill: rgb(var(--c-ink));
+    --liquid-label: rgb(var(--c-cream));
+  }
+
+  .btn-liquid-label {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: inherit;
+  }
+
+  .btn-liquid-fill {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    /* Parked below the button, far enough down to hide the wave crest too. */
+    transform: translateY(calc(100% + 0.7rem));
+    transition: transform 0.62s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .btn-liquid-fill::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--liquid-fill);
+  }
+
+  .btn-liquid-wave {
+    position: absolute;
+    bottom: 100%;
+    left: -50%;
+    width: 200%;
+    height: 0.7rem;
+    fill: var(--liquid-fill);
+    animation: btn-liquid-drift 3.6s linear infinite;
+  }
+
+  @keyframes btn-liquid-drift {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Filling: flip the label the moment the surface covers it, not when the
+     fill finishes — waiting for 100% leaves dark text on dark fill mid-rise,
+     which is the one thing this effect must not do. */
+  .btn-liquid:hover,
+  .btn-liquid:focus-visible {
+    /* Default fill is --c-ink, so the default label is the page colour, not a
+       fixed cream: in dark mode --c-ink IS cream and cream-on-cream is
+       invisible. */
+    color: var(--liquid-label);
+    transition-delay: 0.07s;
+  }
+
+  .btn-liquid:hover .btn-liquid-fill,
+  .btn-liquid:focus-visible .btn-liquid-fill {
+    transform: translateY(0);
+  }
+
+  /* Reduced motion keeps the state change, drops the travel and the ripple:
+     the global rule already collapses the durations, and the wave would be a
+     continuous animation, which is exactly what the preference asks against. */
+  @media (prefers-reduced-motion: reduce) {
+    .btn-liquid-wave {
+      display: none;
+    }
+    .btn-liquid:hover,
+    .btn-liquid:focus-visible {
+      transition-delay: 0s;
+    }
+  }
+
+  /**
+   * Hero image integration. The portrait sits on a white-ish studio
+   * background; a soft wash at its edges dissolves that rectangle into the
+   * page so it reads as part of the composition rather than a photo
+   * dropped into a box. The dashboards behind it are the credibility proof
+   * of the page and must stay sharp — never blur them.
+   */
+  .hero-blend-b {
+    background: linear-gradient(to top, rgb(var(--c-cream)) 0%, transparent 34%);
+  }
+
+  /**
+   * The portrait is shot on a near-white studio background and multiplied into
+   * the white page so the rectangle disappears. Multiply against a dark page
+   * would erase the portrait instead, so dark mode drops the blend and dims
+   * the image slightly so it is not a glare source.
+   */
+  :root[data-theme='dark'] .hero-photo {
+    mix-blend-mode: normal;
+    filter: brightness(0.9) contrast(1.02);
+  }
+  .hero-blend-s {
+    background: linear-gradient(to right, rgb(var(--c-cream)) 0%, transparent 18%);
+  }
+  :root[dir='rtl'] .hero-blend-s {
+    background: linear-gradient(to left, rgb(var(--c-cream)) 0%, transparent 18%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ------------------------------------------------------------------------
+   Landing page (route /landing) — added 2026-09-15 with the hero section.
+   Kept in its own layer block at the end of the file so the sections above
+   are untouched.
+   ------------------------------------------------------------------------ */
+@layer components {
+  /**
+   * The landing hero's photo panel.
+   *
+   * On a phone it runs edge to edge: the container's own gutter is the only
+   * thing between it and the viewport, so a negative inline margin is enough.
+   * From `lg` the panel is one half of a two-column hero and bleeds out to
+   * the END edge only — the same measurement .bleed-end makes, but on one
+   * side at one breakpoint, which a single utility class cannot express.
+   *
+   * The section that holds it carries .bleed-clip; 100vw counts the
+   * scrollbar, so without that clip this would scroll the page sideways.
+   */
+  /**
+   * The page container for the landing, measured off the reference: its
+   * content sits about 3.5% in from each edge on a desktop, which is far
+   * closer to the viewport edge than the rest of the site's `.container-page`
+   * (a centred 86rem box). A phone keeps a fixed 28px instead, which is the
+   * ~7.7% the mobile reference shows at 390px.
+   */
+  .container-landing {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 112rem;
+    padding-inline: 1.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-landing {
+      padding-inline: clamp(2rem, 3.5vw, 4.5rem);
+    }
+  }
+
+  /**
+   * The landing headline.
+   *
+   * Sized off the reference rather than off the shared display scale: at
+   * 1536px the Arabic sets at ~76px on a ~117px line, which is both larger
+   * and much more openly leaded than `.display-hero`. The English headline is
+   * a whole sentence where the Arabic is four words, so it sets smaller — the
+   * same per-script correction `fonts.css` already makes, just tuned for this
+   * one piece of type.
+   */
+  .display-landing {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.02;
+    font-size: clamp(1.875rem, 3.75vw, 3.5rem);
+  }
+
+  :root[lang='ar'] .display-landing {
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1.5;
+    font-size: clamp(2.125rem, 4.95vw, 4.75rem);
+  }
+
+  /**
+   * The pinned paper note over the photograph. Its colour is a landing-scoped
+   * token; anywhere that token is undefined it falls back to the quiet fill,
+   * so the note is never invisible.
+   */
+  .hero-note {
+    background: rgb(var(--c-note, var(--c-blush)));
+  }
+
+  /** The outline CTA's fill. See --c-pill in tokens.css for why it is not --c-paper. */
+  .hero-pill {
+    background: rgb(var(--c-pill));
+  }
+
+  /**
+   * The photo runs out to the END edge of the viewport from `lg` (the copy
+   * column keeps the start side), and edge to edge on a phone.
+   *
+   * The section that holds it carries .bleed-clip; 100vw counts the
+   * scrollbar, so without that clip this would scroll the page sideways.
+   */
+  .hero-photo-bleed {
+    --bleed: 1.75rem;
+    margin-inline: calc(var(--bleed) * -1);
+  }
+
+  @media (min-width: 768px) {
+    .hero-photo-bleed {
+      --bleed: calc(clamp(2rem, 3.5vw, 4.5rem) + max(0px, (100vw - 112rem) / 2));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-photo-bleed {
+      margin-inline-start: 0;
+      margin-inline-end: calc(var(--bleed) * -1);
+      width: calc(100% + var(--bleed));
+    }
+  }
+}
