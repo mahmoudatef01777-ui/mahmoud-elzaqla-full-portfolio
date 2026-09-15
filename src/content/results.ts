@@ -194,9 +194,20 @@ export const results = {
       brand: 'Fakhama',
       logo: '/work/fakhama/logo.webp',
       number: { ar: '~EGP 180,000', en: '~EGP 180,000' },
+      /*
+        ONE CLAUSE, AND IT ENDS IN ARABIC.
+
+        This line used to carry the spend, the views and the platform behind a
+        middot: "... بصرف EGP 2,650 · 1.5M مشاهدة على TikTok". Four direction
+        switches in one sentence, with a neutral separator sitting between two
+        Latin runs — the bidi algorithm has no way to know which side the
+        middot belongs to, so it reordered the whole line and it read as
+        nonsense. The views live in the case study; this row is about what the
+        campaign sold.
+      */
       numberLabel: {
-        ar: 'مبيعات أول كامبين في 4 أيام بصرف EGP 2,650 · 1.5M مشاهدة على TikTok',
-        en: 'sales from the first campaign in 4 days on EGP 2,650 of spend · 1.5M TikTok views',
+        ar: 'مبيعات أول كامبين، في 4 أيام بصرف EGP 2,650',
+        en: 'sales from the first campaign, in 4 days on EGP 2,650 of spend',
       },
       did: {
         ar: 'ظبطت البراند وأدرت الكريتيف والتصوير',
@@ -206,7 +217,12 @@ export const results = {
       // spend was unverified. It is not any more: the Ad sets screenshot on
       // the case study shows EGP 1,103.54 + EGP 1,528.02.
       spend: { ar: 'صرف إعلانات: EGP 2,650', en: 'ad spend: EGP 2,650' },
-      source: { ar: 'تقديري · ~120 أوردر × ~1,500', en: 'Approximate · ~120 orders x ~1,500' },
+      // Same rule: the Arabic ends in Arabic. "×" is a neutral character and
+      // flipped the two figures around it when they sat at the end.
+      source: {
+        ar: 'رقم تقديري — 120 أوردر في متوسط 1,500 جنيه',
+        en: 'Approximate — 120 orders at an average of EGP 1,500',
+      },
       image: {
         src: '/work/fakhama/creative-1.webp',
         width: 1536,
