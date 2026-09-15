@@ -8,11 +8,9 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 /**
  * Hero — two separate compositions, swapped at 1024px.
  *
- * Desktop reads as a spread: eyebrow, one very large headline, a line of
- * supporting copy with the call beside it, then the photograph running the
- * full width of the viewport underneath. Mobile is not that layout scaled
- * down — the headline shortens, the portrait becomes a tall full-bleed
- * moment, and the call becomes a full-width button under it.
+ * The photograph leads and the copy follows it, at both sizes: the full
+ * width of the viewport on a desktop, a tall full-bleed portrait on a phone,
+ * then the eyebrow, the headline and the supporting line underneath.
  *
  * The photograph is a real composition of Mahmoud in front of real Shopify
  * dashboards (docs/master-context.md). It is never cropped so tightly that
@@ -49,61 +47,21 @@ export default function Hero() {
 
   return (
     <section className="relative overflow-hidden pb-12 pt-4 md:pt-8 lg:pb-20">
-      <div className="container-page">
-        <motion.div
-          {...rise(0.04)}
-          className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2.5 border-b border-line pb-5 md:pb-6"
-        >
-          {/*
-            Centred and set heavier than a normal section label, on Mahmoud's
-            instruction. This is the only eyebrow on the site that is not a
-            quiet grey marker at the start of its line — it is the first thing
-            read on the home page, so it carries the job title at a size that
-            can actually be read rather than scanned past.
-
-            The overrides are local on purpose. `.label` is shared by fifteen
-            other eyebrows that should stay quiet; utilities beat it because
-            it lives in @layer components.
-          */}
-          <p className="label eyebrow text-[0.8125rem] font-bold text-ink md:text-sm">
-            {t(hero.label)}
-          </p>
-        </motion.div>
-
-        {/* The one thing a visitor must read. Two lines on desktop. */}
-        <motion.h1
-          {...rise(0.1)}
-          className="display mt-7 max-w-[var(--display-measure)] text-balance text-display-lg text-ink md:mt-9"
-        >
-          {headline}
-          <span className="text-orange">.</span>
-        </motion.h1>
-
-        <motion.p
-          {...rise(0.18)}
-          className="lede mt-8 max-w-[46ch] md:mt-10 lg:max-w-[52ch]"
-        >
-          {t(hero.subline)}
-        </motion.p>
-      </div>
-
       {/* ----------------------------------------------------------- photo */}
 
       <motion.div
         initial={reduce ? { opacity: 0 } : { opacity: 0, y: 26 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: reduce ? 0.4 : 0.95, ease: EASE, delay: 0.24 }}
+        transition={{ duration: reduce ? 0.4 : 0.95, ease: EASE, delay: 0.04 }}
         ref={photoRef}
         /*
-          MOBILE ONLY: the gap under the description is 4rem, not the 2.5rem
-          it was. The phone composition has a dashboard card within a few
-          pixels of its top edge, so at the old spacing the busiest part of
-          the photograph began right under the last line of copy and the two
-          read as one block. `md:` and `lg:` are unchanged — the desktop
-          composition puts the photo the full width of the viewport under a
-          much wider column of text and never had the problem.
+          No top margin: the photograph is the first thing in the section now,
+          so the only space above it is the section's own `pt`. The gap that
+          used to live here has moved onto the copy below, where it does the
+          same job — keeping the busy top edge of the phone composition off
+          the text.
         */
-        className="relative mt-16 md:mt-12 lg:mt-14"
+        className="relative"
       >
         <img
           src={hero.image.mobile}
@@ -132,6 +90,53 @@ export default function Hero() {
         {/* Dissolve the bottom edge of the frame into the page. */}
         <div aria-hidden className="hero-blend-b pointer-events-none absolute inset-x-0 bottom-0 h-24 lg:h-32" />
       </motion.div>
+
+      {/*
+        THE COPY SITS UNDER THE PHOTOGRAPH, and it used to sit above it.
+        Mahmoud's choice on 2026-09-15; his other option was to delete this
+        block outright so the photo could rise, which would have taken the
+        only sentence on the page that says what he does with it.
+
+        So: nothing here was cut. The order changed, and the photograph is
+        now what a visitor meets first.
+      */}
+      <div className="container-page mt-10 md:mt-12 lg:mt-14">
+        <motion.div
+          {...rise(0.18)}
+          className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2.5 border-b border-line pb-5 md:pb-6"
+        >
+          {/*
+            Centred and set heavier than a normal section label, on Mahmoud's
+            instruction. This is the only eyebrow on the site that is not a
+            quiet grey marker at the start of its line — it is the first thing
+            read on the home page, so it carries the job title at a size that
+            can actually be read rather than scanned past.
+
+            The overrides are local on purpose. `.label` is shared by fifteen
+            other eyebrows that should stay quiet; utilities beat it because
+            it lives in @layer components.
+          */}
+          <p className="label eyebrow text-[0.8125rem] font-bold text-ink md:text-sm">
+            {t(hero.label)}
+          </p>
+        </motion.div>
+
+        {/* The one thing a visitor must read. Two lines on desktop. */}
+        <motion.h1
+          {...rise(0.24)}
+          className="display mt-7 max-w-[var(--display-measure)] text-balance text-display-lg text-ink md:mt-9"
+        >
+          {headline}
+          <span className="text-orange">.</span>
+        </motion.h1>
+
+        <motion.p
+          {...rise(0.32)}
+          className="lede mt-8 max-w-[46ch] md:mt-10 lg:max-w-[52ch]"
+        >
+          {t(hero.subline)}
+        </motion.p>
+      </div>
     </section>
   );
 }
