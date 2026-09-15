@@ -52,9 +52,22 @@ export default function Hero() {
       <div className="container-page">
         <motion.div
           {...rise(0.04)}
-          className="flex flex-wrap items-center gap-x-4 gap-y-2.5 border-b border-line pb-5 md:pb-6"
+          className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2.5 border-b border-line pb-5 md:pb-6"
         >
-          <p className="label eyebrow">{t(hero.label)}</p>
+          {/*
+            Centred and set heavier than a normal section label, on Mahmoud's
+            instruction. This is the only eyebrow on the site that is not a
+            quiet grey marker at the start of its line — it is the first thing
+            read on the home page, so it carries the job title at a size that
+            can actually be read rather than scanned past.
+
+            The overrides are local on purpose. `.label` is shared by fifteen
+            other eyebrows that should stay quiet; utilities beat it because
+            it lives in @layer components.
+          */}
+          <p className="label eyebrow text-[0.8125rem] font-bold text-ink md:text-sm">
+            {t(hero.label)}
+          </p>
         </motion.div>
 
         {/* The one thing a visitor must read. Two lines on desktop. */}
