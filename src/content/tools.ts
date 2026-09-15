@@ -15,21 +15,18 @@ import type { Localized } from './types';
  * `brand` is the one colour that describes a platform — it tints the hairline
  * ring and, for a mark that is genuinely one colour, fills the glyph.
  *
- * `layers` is for the two marks that are NOT one colour. Each layer is a real
- * part of the real logo, never a decoration invented here:
- *
- *   TikTok  — the note in cyan and in red, offset either side of the black
- *             one, which is how the mark is actually built. The top layer
- *             takes `--c-ink` rather than #000 so it is near-white in dark
- *             mode, which is what TikTok's own guidance does on dark grounds.
- *   Google  — the three shapes of the Google Ads mark, with the fills read
- *     Ads     off the official logo file: blue on the right bar, yellow on
- *             the left bar, green on the circle.
+ * `layers` is for a mark that is NOT one colour. Each layer is a real part of
+ * the real logo, never a decoration invented here — TikTok's note in cyan and
+ * in red, offset either side of the black one, which is how the mark is
+ * actually built. Its top layer takes `--c-ink` rather than #000 so it is
+ * near-white in dark mode, which is what TikTok's own guidance does on dark
+ * grounds. The field stays for whatever comes next.
  *
  * DO NOT add a tool Mahmoud has not worked in. Every entry has to be
- * something he can be asked about in an interview. Odoo ERP was removed on
- * 2026-09-15 at his request; the Bloomy case study still cites it as the
- * source of its figures, which is a different claim and stays.
+ * something he can be asked about in an interview. Odoo ERP and Google Ads
+ * both came out on 2026-09-15 at his request; the Bloomy case study still
+ * cites Odoo ERP as the source of its figures, which is a different claim
+ * and stays.
  */
 
 /** One coloured part of a mark that is not a single colour. */
@@ -93,27 +90,6 @@ export const tools = {
       brand: "#7AB55C",
       path:
         "M15.337 23.979l7.216-1.561s-2.604-17.613-2.625-17.73c-.018-.116-.114-.192-.211-.192s-1.929-.136-1.929-.136-1.275-1.274-1.439-1.411c-.045-.037-.075-.057-.121-.074l-.914 21.104h.023zM11.71 11.305s-.81-.424-1.774-.424c-1.447 0-1.504.906-1.504 1.141 0 1.232 3.24 1.715 3.24 4.629 0 2.295-1.44 3.76-3.406 3.76-2.354 0-3.54-1.465-3.54-1.465l.646-2.086s1.245 1.066 2.28 1.066c.675 0 .975-.545.975-.932 0-1.619-2.654-1.694-2.654-4.359-.034-2.237 1.571-4.416 4.827-4.416 1.257 0 1.875.361 1.875.361l-.945 2.715-.02.01zM11.17.83c.136 0 .271.038.405.135-.984.465-2.064 1.639-2.508 3.992-.656.213-1.293.405-1.889.578C7.697 3.75 8.951.84 11.17.84V.83zm1.235 2.949v.135c-.754.232-1.583.484-2.394.736.466-1.777 1.333-2.645 2.085-2.971.193.501.309 1.176.309 2.1zm.539-2.234c.694.074 1.141.867 1.429 1.755-.349.114-.735.231-1.158.366v-.252c0-.752-.096-1.371-.271-1.871v.002zm2.992 1.289c-.02 0-.06.021-.078.021s-.289.075-.714.21c-.423-1.233-1.176-2.37-2.508-2.37h-.115C12.135.209 11.669 0 11.265 0 8.159 0 6.675 3.877 6.21 5.846c-1.194.365-2.063.636-2.16.674-.675.213-.694.232-.772.87-.075.462-1.83 14.063-1.83 14.063L15.009 24l.927-21.166z",
-    },
-    {
-      id: "googleads",
-      name: "Google Ads",
-      brand: "#3C8BD9",
-      path:
-        "M3.9998 22.9291C1.7908 22.9291 0 21.1383 0 18.9293s1.7908-3.9998 3.9998-3.9998 3.9998 1.7908 3.9998 3.9998-1.7908 3.9998-3.9998 3.9998zm19.4643-6.0004L15.4632 3.072C14.3586 1.1587 11.9121.5028 9.9988 1.6074S7.4295 5.1585 8.5341 7.0718l8.0009 13.8567c1.1046 1.9133 3.5511 2.5679 5.4644 1.4646 1.9134-1.1046 2.568-3.5511 1.4647-5.4644zM7.5137 4.8438L1.5645 15.1484A4.5 4.5 0 0 1 4 14.4297c2.5597-.0075 4.6248 2.1585 4.4941 4.7148l3.2168-5.5723-3.6094-6.25c-.4499-.7793-.6322-1.6394-.5878-2.4784z",
-      /*
-        The same three shapes as `path`, split apart so each can take its own
-        fill. The second subpath is written absolute here — in `path` it opens
-        with a RELATIVE `m19.4643-6.0004` measured from the start of the
-        circle, i.e. 3.9998+19.4643, 22.9291-6.0004.
-
-        Fills read off the official logo file, not guessed from Google's
-        general palette, which carries slightly different values.
-      */
-      layers: [
-        { d: "M3.9998 22.9291C1.7908 22.9291 0 21.1383 0 18.9293s1.7908-3.9998 3.9998-3.9998 3.9998 1.7908 3.9998 3.9998-1.7908 3.9998-3.9998 3.9998z", fill: "#34A852" },
-        { d: "M23.4641 16.9287L15.4632 3.072C14.3586 1.1587 11.9121.5028 9.9988 1.6074S7.4295 5.1585 8.5341 7.0718l8.0009 13.8567c1.1046 1.9133 3.5511 2.5679 5.4644 1.4646 1.9134-1.1046 2.568-3.5511 1.4647-5.4644z", fill: "#3C8BD9" },
-        { d: "M7.5137 4.8438L1.5645 15.1484A4.5 4.5 0 0 1 4 14.4297c2.5597-.0075 4.6248 2.1585 4.4941 4.7148l3.2168-5.5723-3.6094-6.25c-.4499-.7793-.6322-1.6394-.5878-2.4784z", fill: "#FABC04" },
-      ],
     },
   ] satisfies Tool[],
 };

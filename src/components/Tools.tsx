@@ -11,7 +11,7 @@ import { FadeIn } from './ui/motion';
  * so there is no heading scale, no card, and no fill — only a hairline circle.
  *
  * Each mark is the platform's official glyph. Resting state is monochrome so
- * the band reads as one quiet row rather than four competing logos; the real
+ * the band reads as one quiet row rather than three competing logos; the real
  * colours arrive on hover, over 650ms.
  *
  * HOW THE FILL WORKS. Two copies of the mark sit in the same grid cell. The
@@ -23,8 +23,8 @@ import { FadeIn } from './ui/motion';
  * "filling in" should look like. The same ease runs in both directions, so
  * leaving drains exactly the way entering filled.
  *
- * Marks with more than one colour (TikTok, Google Ads) carry their parts in
- * `layers`; a single-colour mark falls back to its own `brand`. Either way
+ * A mark with more than one colour (TikTok) carries its parts in `layers`;
+ * a single-colour mark falls back to its own `brand`. Either way
  * the top layer is built the same, so nothing here special-cases a brand.
  *
  * HOVER IS GATED on `@media (hover: hover)`. Without it a tap on a phone
@@ -45,15 +45,7 @@ export default function Tools() {
           <p className="label eyebrow justify-center text-center">{t(tools.title)}</p>
         </FadeIn>
 
-        <ul
-          /*
-            The phone gap is tighter than the desktop one so all FOUR marks
-            sit on one line. With the old five it did not matter — they broke
-            3 + 2, which looks deliberate. Four at the desktop gap break
-            3 + 1, and a single mark alone on a second row reads as a mistake.
-          */
-          className="mt-7 flex flex-wrap items-start justify-center gap-x-3 gap-y-7 min-[420px]:gap-x-6 sm:gap-x-8 md:mt-9 md:gap-x-12"
-        >
+        <ul className="mt-7 flex flex-wrap items-start justify-center gap-x-8 gap-y-7 md:mt-9 md:gap-x-12">
           {tools.items.map((tool, i) => (
             <FadeIn
               as="li"
