@@ -6,25 +6,62 @@ import type { Localized } from './types';
  *
  * The marks are the official brand glyphs (simple-icons, CC0), inlined as
  * paths so nothing is fetched at runtime and no generic stand-in is ever
- * substituted for a real logo. Each `brand` is that platform's own colour,
- * used on hover only.
+ * substituted for a real logo.
  *
- * TikTok's registered colour is #000000, which would read as no change at
- * all against the resting grey, so it uses the red from its own logo — the
- * same value the social icons use.
+ * RESTING STATE IS MONOCHROME, and that is the point: four grey marks read
+ * as one quiet row under the hero instead of four competing logos. The real
+ * colours belong to the hover, where they arrive slowly.
+ *
+ * `brand` is the one colour that describes a platform — it tints the hairline
+ * ring and, for a mark that is genuinely one colour, fills the glyph.
+ *
+ * `layers` is for the two marks that are NOT one colour. Each layer is a real
+ * part of the real logo, never a decoration invented here:
+ *
+ *   TikTok  — the note in cyan and in red, offset either side of the black
+ *             one, which is how the mark is actually built. The top layer
+ *             takes `--c-ink` rather than #000 so it is near-white in dark
+ *             mode, which is what TikTok's own guidance does on dark grounds.
+ *   Google  — the three shapes of the Google Ads mark, with the fills read
+ *     Ads     off the official logo file: blue on the right bar, yellow on
+ *             the left bar, green on the circle.
  *
  * DO NOT add a tool Mahmoud has not worked in. Every entry has to be
- * something he can be asked about in an interview.
+ * something he can be asked about in an interview. Odoo ERP was removed on
+ * 2026-09-15 at his request; the Bloomy case study still cites it as the
+ * source of its figures, which is a different claim and stays.
  */
+
+/** One coloured part of a mark that is not a single colour. */
+export interface ToolLayer {
+  /** 24x24 viewBox path. */
+  d: string;
+  /**
+   * Any CSS colour. Applied through `style`, not the `fill` attribute, so
+   * `rgb(var(--c-ink))` resolves — an attribute would not expand the var.
+   */
+  fill: string;
+  /** Offset inside the 24x24 box, for marks built from offset copies. */
+  dx?: number;
+  dy?: number;
+}
 
 export interface Tool {
   id: string;
   name: string;
-  /** The platform's own colour. Hover only. */
+  /** The platform's own colour: the ring on hover, and the glyph fill for a
+   *  mark that has no `layers`. */
   brand: string;
-  /** 24x24 viewBox path. */
+  /** 24x24 viewBox path. The resting, monochrome state — always used. */
   path: string;
+  /** The mark in its real colours, cross-faded in on hover. Omit when
+   *  `brand` alone is the whole truth about the logo. */
+  layers?: ToolLayer[];
 }
+
+/** TikTok's mark is this one glyph drawn three times, offset. */
+const TIKTOK =
+  'M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z';
 
 export const tools = {
   title: { ar: 'الأدوات اللي بشتغل بيها', en: 'Tools I Work With' } satisfies Localized,
@@ -40,9 +77,15 @@ export const tools = {
     {
       id: "tiktok",
       name: "TikTok Ads",
+      // The ring colour. TikTok's registered colour is #000000, which would
+      // read as no change at all against the resting grey.
       brand: "#FE2C55",
-      path:
-        "M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z",
+      path: TIKTOK,
+      layers: [
+        { d: TIKTOK, fill: "#25F4EE", dx: -0.85, dy: -0.85 },
+        { d: TIKTOK, fill: "#FE2C55", dx: 0.85, dy: 0.85 },
+        { d: TIKTOK, fill: "rgb(var(--c-ink))" },
+      ],
     },
     {
       id: "shopify",
@@ -54,16 +97,23 @@ export const tools = {
     {
       id: "googleads",
       name: "Google Ads",
-      brand: "#4285F4",
+      brand: "#3C8BD9",
       path:
         "M3.9998 22.9291C1.7908 22.9291 0 21.1383 0 18.9293s1.7908-3.9998 3.9998-3.9998 3.9998 1.7908 3.9998 3.9998-1.7908 3.9998-3.9998 3.9998zm19.4643-6.0004L15.4632 3.072C14.3586 1.1587 11.9121.5028 9.9988 1.6074S7.4295 5.1585 8.5341 7.0718l8.0009 13.8567c1.1046 1.9133 3.5511 2.5679 5.4644 1.4646 1.9134-1.1046 2.568-3.5511 1.4647-5.4644zM7.5137 4.8438L1.5645 15.1484A4.5 4.5 0 0 1 4 14.4297c2.5597-.0075 4.6248 2.1585 4.4941 4.7148l3.2168-5.5723-3.6094-6.25c-.4499-.7793-.6322-1.6394-.5878-2.4784z",
-    },
-    {
-      id: "odoo",
-      name: "Odoo ERP",
-      brand: "#714B67",
-      path:
-        "M21.1002 15.7957c-1.6015 0-2.8997-1.2983-2.8997-2.8998s1.2983-2.8997 2.8997-2.8997c1.6015 0 2.8998 1.2982 2.8998 2.8997 0 1.5999-1.2979 2.8998-2.8998 2.8998zm0-1.2c.9388.0006 1.7003-.7601 1.7008-1.6989.0004-.9388-.7602-1.7003-1.699-1.7007h-.0018c-.9388.0004-1.6994.7619-1.699 1.7007.0005.9381.761 1.6985 1.699 1.699zm-6.0655 1.2c-1.6014 0-2.8997-1.2983-2.8997-2.8998s1.2983-2.8997 2.8997-2.8997c1.6015 0 2.8998 1.2982 2.8998 2.8997 0 1.5999-1.2999 2.8998-2.8998 2.8998zm0-1.2c.9389.0006 1.7003-.7601 1.7008-1.6989.0005-.9388-.7602-1.7003-1.699-1.7007h-.0018c-.9388.0004-1.6994.7619-1.699 1.7007.0005.9381.761 1.6985 1.699 1.699zM11.865 12.858c0 1.6199-1.2979 2.9378-2.8977 2.9378s-2.8998-1.314-2.8998-2.9358 1.1799-2.8597 2.8998-2.8597c.6359 0 1.2239.134 1.6998.484v-1.68a.6.6 0 0 1 1.2 0v4.0537h-.002zm-2.8977 1.7399c.9388.0005 1.7002-.7602 1.7007-1.699.0005-.9388-.7602-1.7003-1.699-1.7007h-.0017c-.9389.0004-1.6995.7619-1.699 1.7007.0004.9381.7608 1.6985 1.699 1.699zm-6.0675 1.1979C1.2983 15.7957 0 14.4974 0 12.8959s1.2983-2.8997 2.8998-2.8997 2.8997 1.2982 2.8997 2.8997c0 1.5999-1.2999 2.8998-2.8997 2.8998zm0-1.2c.9388.0006 1.7002-.7601 1.7007-1.699.0005-.9387-.7602-1.7002-1.699-1.7006h-.0017c-.9388.0004-1.6995.7619-1.699 1.7007.0004.9381.7608 1.6985 1.699 1.699z",
+      /*
+        The same three shapes as `path`, split apart so each can take its own
+        fill. The second subpath is written absolute here — in `path` it opens
+        with a RELATIVE `m19.4643-6.0004` measured from the start of the
+        circle, i.e. 3.9998+19.4643, 22.9291-6.0004.
+
+        Fills read off the official logo file, not guessed from Google's
+        general palette, which carries slightly different values.
+      */
+      layers: [
+        { d: "M3.9998 22.9291C1.7908 22.9291 0 21.1383 0 18.9293s1.7908-3.9998 3.9998-3.9998 3.9998 1.7908 3.9998 3.9998-1.7908 3.9998-3.9998 3.9998z", fill: "#34A852" },
+        { d: "M23.4641 16.9287L15.4632 3.072C14.3586 1.1587 11.9121.5028 9.9988 1.6074S7.4295 5.1585 8.5341 7.0718l8.0009 13.8567c1.1046 1.9133 3.5511 2.5679 5.4644 1.4646 1.9134-1.1046 2.568-3.5511 1.4647-5.4644z", fill: "#3C8BD9" },
+        { d: "M7.5137 4.8438L1.5645 15.1484A4.5 4.5 0 0 1 4 14.4297c2.5597-.0075 4.6248 2.1585 4.4941 4.7148l3.2168-5.5723-3.6094-6.25c-.4499-.7793-.6322-1.6394-.5878-2.4784z", fill: "#FABC04" },
+      ],
     },
   ] satisfies Tool[],
 };
