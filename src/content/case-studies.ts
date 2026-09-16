@@ -412,6 +412,35 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
+        /*
+          THE ONLY PLATFORM-SOURCED EVIDENCE ON THIS PAGE, and it sits
+          directly above the results so the ~120 orders are read next to it.
+
+          It proves the messaging VOLUME, not the order count: 664 + 2,824 =
+          3,488 conversations. A conversation is not an order and the caption
+          says so. What it does settle is the spend — EGP 1,103.54 +
+          EGP 1,528.02 — which is where the ~2,650 comes from.
+
+          The date range in the screenshot reads "Maximum", i.e. the life of
+          the ad account, not the campaign. It is not cropped out: cropping a
+          screenshot to make it say something narrower than it says is how
+          evidence stops being evidence.
+        */
+        id: 'evidence',
+        title: { ar: 'الإعلانات', en: 'The ads' },
+        shots: [
+          { src: '/work/fakhama/ads-adsets.webp', width: 1872, height: 459,
+            caption: {
+              ar: 'Meta Ads Manager — الـ ad sets بتاعة الكامبين: صرف 1,103.54 + 1,528.02 جنيه، و664 + 2,824 محادثة. دي محادثات مش أوردرات؛ الأوردرات كانت بتتجمع يدوي على واتساب.',
+              en: 'Meta Ads Manager — the ad sets in this campaign: EGP 1,103.54 + EGP 1,528.02 spent, and 664 + 2,824 messaging conversations. These are conversations, not orders; the orders were collected by hand over WhatsApp.',
+            },
+            alt: {
+              ar: 'جدول ad sets في Meta Ads Manager لحساب Fkhama بنتيجة messaging conversations والمبالغ المنفقة.',
+              en: 'A Meta Ads Manager ad-sets table for the Fkhama account showing messaging conversations and amounts spent.',
+            } },
+        ],
+      },
+      {
         id: 'results',
         title: { ar: 'النتايج', en: 'Results' },
         /*
