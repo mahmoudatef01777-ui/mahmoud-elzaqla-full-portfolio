@@ -233,51 +233,49 @@
     position: absolute;
     top: 50%;
     left: 50%;
+    /* Above the portrait, always. The component no longer writes a per-cell
+       z-index: nothing passes behind him, so there is nothing to sort. */
+    z-index: 2;
     /* The transform carries its own -50% offsets, so the cell centres on the
        point rather than hanging off it. */
     will-change: transform, opacity;
   }
 
   /**
-   * No plate and no ring in light mode: the page is white and --c-paper is
-   * white, so the only thing the chip ever drew was a grey hairline around
-   * every logo. The mark stands on the page by itself.
+   * NO PLATE, NO RING, NO PADDING. The mark fills its own circle edge to edge.
    *
-   * Dark mode keeps the plate — see below. There it is not decoration: most
-   * of these logos are dark marks on white, and without a light disc behind
-   * them they would vanish into the page.
+   * What used to be here was a 4.5rem disc holding a 2.6rem logo, which left
+   * a ring of backing colour around every mark — `--c-paper`, a light grey in
+   * dark mode. That ring is what read as a halo, and it is gone.
+   *
+   * IT CANNOT GO FURTHER THAN THIS, and the reason is in the files: eight of
+   * the nine logos have no alpha channel. They are profile pictures, not
+   * logo art — Cove is a mark over a photograph of the sea, Brilliant over a
+   * bookshelf, Dahab Decor and El Haramein over their own product shots. The
+   * white behind Bloomy and أصله عربي is inside the image, not behind it in
+   * CSS, and stripping it would leave black art invisible on the dark page.
+   * Round, filled, edge to edge is the honest treatment for what these
+   * actually are. Transparent logo files from the clients would change that.
    */
   .orbit-item {
-    display: grid;
-    place-items: center;
-    width: 4.5rem;
-    height: 4.5rem;
+    display: block;
+    width: 3.75rem;
+    height: 3.75rem;
     border-radius: 9999px;
-    border: 1px solid transparent;
-    transition:
-      border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-      box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    overflow: hidden;
+    transition: box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .orbit-item img {
-    width: 2.6rem;
-    height: 2.6rem;
-    border-radius: 9999px;
-    object-fit: contain;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   /* The only ring on the page, and only while the pointer is on it. */
   .orbit-item:hover,
   .orbit-item:focus-visible {
-    box-shadow: 0 0 0 1.5px var(--brand);
+    box-shadow: 0 0 0 2px var(--brand);
     outline: none;
-  }
-
-  :root[data-theme='dark'] .orbit-item {
-    border-color: rgb(var(--c-line));
-    background: rgb(var(--c-paper));
-  }
-  :root[data-theme='dark'] .orbit-item:hover,
-  :root[data-theme='dark'] .orbit-item:focus-visible {
-    border-color: var(--brand);
   }
 
   @media (min-width: 768px) {
@@ -288,12 +286,8 @@
       height: 92%;
     }
     .orbit-item {
-      width: 5.25rem;
-      height: 5.25rem;
-    }
-    .orbit-item img {
-      width: 3rem;
-      height: 3rem;
+      width: 4.5rem;
+      height: 4.5rem;
     }
   }
 
@@ -312,7 +306,8 @@
     position: absolute;
     bottom: 0;
     left: 50%;
-    z-index: 50;
+    /* Below the cells. Nothing orbits behind him any more. */
+    z-index: 1;
     transform: translateX(-50%);
     height: 78%;
     width: auto;

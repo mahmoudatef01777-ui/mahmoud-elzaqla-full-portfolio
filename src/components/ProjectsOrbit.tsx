@@ -24,20 +24,26 @@ import { FadeIn } from './ui/motion';
  * loop sets is which project is at the front, and that changes about once a
  * second, not once a frame.
  *
- * DEPTH is `sin(angle)`: +1 at the near point (bottom of the ellipse, full
- * size and opacity, on top), −1 at the far point (top, smallest, faded, at the
- * back). Scale, opacity and z-index all read off that one number, so nothing
- * can drift out of agreement with anything else.
+ * NOTHING EVER PASSES BEHIND HIM. Until 2026-09-16 the far half of the ring
+ * ran behind his shoulders — a depth illusion. Mahmoud asked for the marks to
+ * stay in front and stay readable, so the far half is no longer drawn at all:
+ * every cell sits above the portrait in the stacking order, and the ones on
+ * the back of the ellipse are simply invisible.
  *
- * THE CENTRE is Mahmoud, and the ellipse is deliberately shallow so the
- * brands travel AROUND him rather than arcing over his head and under his
- * feet. The photo sits at z-index 50, exactly half way up the depth range, so
- * the far half of the ring passes behind his shoulders and the near half
- * passes in front of his chest. That crossing is the whole effect; without it
- * the ring would read as a flat row of circles.
+ * WHICH MEANS THE RING READS AS A STREAM. A mark fades in at one side, sweeps
+ * across the front of his chest, and fades out at the other; the return leg
+ * happens with the opacity at zero. Three or four of the ten are legible at
+ * any moment, which is the point — the row should suggest that there are more
+ * projects than the ones on screen, and the way to say that is to not show
+ * them all.
  *
- * `RING_SHIFT` drops the ring below the box's centre so the sweep never
- * crosses his face.
+ * `POSITION IS THE ONLY THING THAT MOVES.` The marks never rotate with the
+ * orbital angle — a logo turning upside down at the far side would be
+ * unreadable and would look like a carousel. Scale moves a little, and only a
+ * little: 0.9 to 1.
+ *
+ * `RING_SHIFT` drops the ring below the box's centre, so the sweep crosses
+ * his chest and never his face.
  *
  * It pauses whenever the pointer is inside the ring, not just on an icon: the
  * icons are moving, so waiting for a hover on one of them would make clicking
@@ -48,18 +54,33 @@ import { FadeIn } from './ui/motion';
  * once and stays put, every logo still visible and every link still reachable.
  */
 
-/** Radians per second. One full turn takes about 40s. */
-const SPEED = (Math.PI * 2) / 40;
+/** Radians per second. One full turn takes about 64s — slow on purpose. */
+const SPEED = (Math.PI * 2) / 64;
 
-/** Scale at the far point and at the near point. */
-const SCALE_BACK = 0.64;
+/** Scale across the visible sweep. Deliberately a narrow range. */
+const SCALE_BACK = 0.9;
 const SCALE_FRONT = 1;
 
-/** Opacity at the far point. The near point is always 1. */
-const OPACITY_BACK = 0.38;
+/**
+ * The visible window, in `depth` (0 at the back of the ellipse, 1 at the
+ * front). Below FADE_IN a mark is not drawn; above FADE_FULL it is solid;
+ * between the two it is on its way in or out.
+ *
+ * Raising FADE_IN shows fewer marks at once. On a phone it is raised further
+ * — see `measure` — because the ellipse is smaller there and a crowd of marks
+ * would sit on top of the portrait.
+ */
+const FADE_IN = 0.42;
+const FADE_FULL = 0.78;
 
 /** How far below the box centre the ring runs, as a share of the box height. */
 const RING_SHIFT = 0.16;
+
+/** Smooth 0..1 ramp, so marks arrive and leave without a visible edge. */
+function ramp(x: number, a: number, b: number) {
+  const t = Math.min(1, Math.max(0, (x - a) / (b - a)));
+  return t * t * (3 - 2 * t);
+}
 
 export default function ProjectsOrbit() {
   const { t, href, navigate, isRTL } = useLang();
@@ -82,8 +103,8 @@ export default function ProjectsOrbit() {
    * run, spent on something nobody was looking at.
    */
   const visibleRef = useRef(false);
-  /** Last z-index written per cell, so an unchanged one is not re-written. */
-  const zRef = useRef<number[]>([]);
+  /** Whether each cell is currently past the fade, so the flag is written once. */
+  const hiddenRef = useRef<boolean[]>([]);
 
   /**
       * Ellipse radii and the ring's vertical offset, in px.
@@ -94,7 +115,7 @@ export default function ProjectsOrbit() {
       * frame's writes, and turns a ten-element ring into a full reflow sixty
       * times a second.
       */
-  const [radii, setRadii] = useState({ rx: 320, ry: 96, shift: 0 });
+  const [radii, setRadii] = useState({ rx: 320, ry: 96, shift: 0, fadeIn: FADE_IN });
 
   /* The ellipse is wide and shallow on a desktop — a ring seen at an angle —
      and rounder on a phone, where a shallow one would stack every logo onto
@@ -110,6 +131,9 @@ export default function ProjectsOrbit() {
         rx,
         ry: rx * (w < 640 ? 0.36 : 0.17),
         shift: box.clientHeight * RING_SHIFT,
+        // Fewer marks on screen at once on a phone: the ellipse is smaller,
+        // so the same number of them would pile onto the portrait.
+        fadeIn: w < 640 ? 0.6 : FADE_IN,
       });
     };
     measure();
@@ -134,27 +158,31 @@ export default function ProjectsOrbit() {
 
   /** Writes every cell's transform for the current angle. */
   const layout = useCallback(() => {
-    const { rx, ry, shift } = radii;
+    const { rx, ry, shift, fadeIn } = radii;
     for (let i = 0; i < count; i += 1) {
       const el = cellRefs.current[i];
       if (!el) continue;
 
       const theta = angleRef.current + (i * Math.PI * 2) / count;
-      const depth = (Math.sin(theta) + 1) / 2; // 0 far, 1 near
+      const depth = (Math.sin(theta) + 1) / 2; // 0 at the back, 1 at the front
+      const shown = ramp(depth, fadeIn, FADE_FULL);
+
+      // A touch of drift, at a period that does not divide into the orbit's,
+      // so the ring never settles into a pattern the eye can predict.
+      const bob = Math.sin(angleRef.current * 1.7 + i * 2.4) * 3;
+
       const scale = SCALE_BACK + (SCALE_FRONT - SCALE_BACK) * depth;
 
       el.style.transform = `translate3d(calc(${Math.cos(theta) * rx}px - 50%), calc(${
-        Math.sin(theta) * ry + shift
+        Math.sin(theta) * ry + shift + bob
       }px - 50%), 0) scale(${scale})`;
-      el.style.opacity = String(OPACITY_BACK + (1 - OPACITY_BACK) * depth);
+      el.style.opacity = shown.toFixed(3);
 
-      // z-index only when it actually changes: transform and opacity are
-      // composited, but a z-index write re-orders the stacking context and
-      // costs a style recalculation every time.
-      const z = Math.round(depth * 100);
-      if (zRef.current[i] !== z) {
-        zRef.current[i] = z;
-        el.style.zIndex = String(z);
+      // A mark that is not drawn must not be clickable either.
+      const hidden = shown < 0.02;
+      if (hiddenRef.current[i] !== hidden) {
+        hiddenRef.current[i] = hidden;
+        el.style.visibility = hidden ? 'hidden' : 'visible';
       }
     }
   }, [count, radii]);
