@@ -6,11 +6,11 @@ import type { Localized } from './types';
  */
 // Named `footer` because `contact` is already the identity block in site.ts.
 export const footer = {
-  label: { ar: 'يلا نتكلم', en: "Let's talk" } satisfies Localized,
+  label: { ar: 'يلا نتكلم', en: "Let’s talk" } satisfies Localized,
 
   heading: {
     ar: 'يلا نبني حاجة تكبر بجد.',
-    en: "Let's build something that actually grows.",
+    en: "Let’s build something that actually grows.",
   } satisfies Localized,
 
   body: {

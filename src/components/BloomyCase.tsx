@@ -175,7 +175,7 @@ export default function BloomyCase() {
               className="h-full w-full rounded-full object-contain"
             />
           </span>
-          <SectionTitle>{bloomy.title}</SectionTitle>
+          <SectionTitle as="h1">{bloomy.title}</SectionTitle>
           <Chip tone="orange">{t(bloomy.badge)}</Chip>
           <SocialLinks
             links={splitLinks(linksForProject('bloomy'), bloomy.title).social}

@@ -36,7 +36,7 @@ export const aboutHero = {
 
   cta: {
     href: 'https://wa.me/201008726224',
-    label: { ar: 'كلمني', en: "Let's Talk" } satisfies Localized,
+    label: { ar: 'كلمني', en: "Let’s Talk" } satisfies Localized,
   },
 
   /** Scrolls to the section under the hero. */

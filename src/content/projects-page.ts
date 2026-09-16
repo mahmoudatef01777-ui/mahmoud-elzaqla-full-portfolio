@@ -8,7 +8,7 @@ export const projectsPage = {
   title: { ar: 'كل المشاريع', en: 'All projects' } satisfies Localized,
   subtitle: {
     ar: 'مجموعة من المشاريع اللي اشتغلت عليها — بنتائج موثقة، وتجارب مختلفة من قلب الـE-commerce.',
-    en: "A selection of projects I've worked on — real results, different challenges, and hands-on e-commerce experience.",
+    en: "A selection of projects I’ve worked on — real results, different challenges, and hands-on e-commerce experience.",
   } satisfies Localized,
 
   /**

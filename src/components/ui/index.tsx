@@ -20,18 +20,27 @@ export function SectionLabel({ children, tone = 'ink' }: { children: ReactNode; 
   );
 }
 
-/** Section title, at the one display size every section shares. */
+/**
+ * Section title, at the one display size every section shares.
+ *
+ * `as` changes the TAG and nothing else — same classes, same size, same
+ * weight. Default h2, because most uses label a section inside a longer
+ * page. Pass `as="h1"` where this IS the page's title: /projects and every
+ * case study, which otherwise ship with no h1 at all.
+ */
 export function SectionTitle({
   children,
+  as: Tag = 'h2',
   tone = 'ink',
   className,
 }: {
   children: ReactNode;
+  as?: 'h1' | 'h2';
   tone?: 'ink' | 'onOrange';
   className?: string;
 }) {
   return (
-    <h2
+    <Tag
       className={cn(
         'display text-display-sm',
         tone === 'onOrange' ? 'text-on-orange' : 'text-ink',
@@ -39,7 +48,7 @@ export function SectionTitle({
       )}
     >
       {children}
-    </h2>
+    </Tag>
   );
 }
 

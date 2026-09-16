@@ -152,7 +152,7 @@ export const landingHero = {
       icon: 'sales' as const,
       value: 'EGP 7M+',
       label: {
-        ar: 'مبيعات في براندات e‑commerce',
+        ar: 'مبيعات في براندات e-commerce',
         en: 'Sales across e-commerce businesses',
       } satisfies Localized, // REVIEW
     },
@@ -168,7 +168,7 @@ export const landingHero = {
       value: '~6',
       unit: { ar: 'شهور', en: 'months' } satisfies Localized,
       label: {
-        ar: 'خبرة e‑commerce عملية',
+        ar: 'خبرة e-commerce عملية',
         en: 'Hands-on e-commerce experience',
       } satisfies Localized, // REVIEW
     },

@@ -184,7 +184,7 @@ export default function StoryTimeline({ stages }: { stages: StoryStage[] }) {
               </p>
             );
           })()}
-          <h3 className="display mt-1.5 text-display-xs text-ink">{t(stage.name)}</h3>
+          <h2 className="display mt-1.5 text-display-xs text-ink">{t(stage.name)}</h2>
 
           {t(stage.body).map((para, k) => (
             <p

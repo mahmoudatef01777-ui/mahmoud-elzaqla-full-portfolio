@@ -204,7 +204,7 @@ export const caseStudies: CaseStudy[] = [
         shots: [
           { src: '/work/cove/ops-1.webp', width: 1500, height: 2000,
             caption: { ar: 'المخزن — البضاعة مرصوصة بالموديل واللون. ده اللي بيخلي أوردر يتجهّز في دقايق بدل ما يتأخر.', en: 'The stockroom, sorted by style and colour. This is what lets an order be picked in minutes instead of slipping.' },
-            alt: { ar: 'أرفف مخزن Cove.', en: "Cove's stockroom shelves." } },
+            alt: { ar: 'أرفف مخزن Cove.', en: "Cove’s stockroom shelves." } },
         ],
       },
       {
@@ -219,7 +219,7 @@ export const caseStudies: CaseStudy[] = [
         shots: [
           { src: '/work/cove/results-1.webp', width: 692, height: 395,
             caption: { ar: 'داشبورد Shopify للفترة كلها — ده مصدر الأرقام اللي فوق.', en: 'The Shopify dashboard for the whole period — the source of the figures above.' },
-            alt: { ar: 'داشبورد Shopify لستور Cove.', en: "Cove's Shopify dashboard." } },
+            alt: { ar: 'داشبورد Shopify لستور Cove.', en: "Cove’s Shopify dashboard." } },
         ],
         note: {
           // REVIEW
@@ -332,18 +332,18 @@ export const caseStudies: CaseStudy[] = [
         shots: [
           { src: '/work/veloura/results-shopify-7-14.webp', width: 768, height: 438,
             caption: { ar: 'Shopify — 20.1 ألف زيارة · EGP 773.9K مبيعات · 988 أوردر · متوسط قيمة الأوردر EGP 718.46 · 7–14 سبتمبر 2026.', en: 'Shopify — 20.1K sessions · EGP 773.9K in sales · 988 orders · EGP 718.46 average order value · Sep 7–14, 2026.' },
-            alt: { ar: 'داشبورد Shopify لستور Veloura من 7 لـ 14 سبتمبر 2026.', en: "Veloura's Shopify dashboard for Sep 7–14, 2026." } },
+            alt: { ar: 'داشبورد Shopify لستور Veloura من 7 لـ 14 سبتمبر 2026.', en: "Veloura’s Shopify dashboard for Sep 7–14, 2026." } },
           { src: '/work/veloura/results-meta-7-14.webp', width: 1820, height: 430,
             caption: { ar: 'Meta Ads — حملتين شغالين: 657 عملية شرا من الموقع بتكلفة EGP 20.75 للشرا، وصرف EGP 13,629.83 · 7–14 سبتمبر 2026.', en: 'Meta Ads — two live campaigns: 657 website purchases at EGP 20.75 per purchase, on EGP 13,629.83 spent · Sep 7–14, 2026.' },
             alt: { ar: 'جدول حملات Meta Ads لـ Veloura فيه 657 عملية شرا وصرف 13,629.83 جنيه.', en: 'A Meta Ads campaigns table for Veloura showing 657 purchases on EGP 13,629.83 spent.' } },
           { src: '/work/veloura/results-tiktok-9-14.webp', width: 835, height: 600,
             caption: { ar: 'TikTok Ads — صرف EGP 4,061.68 · 197,436 ظهور · CTR 2.86% · 287 تحويل · 9–14 سبتمبر 2026.', en: 'TikTok Ads — EGP 4,061.68 spent · 197,436 impressions · 2.86% CTR · 287 conversions · Sep 9–14, 2026.' },
-            alt: { ar: 'داشبورد TikTok Ads لـ Veloura من 9 لـ 14 سبتمبر 2026.', en: "Veloura's TikTok Ads dashboard for Sep 9–14, 2026." } },
+            alt: { ar: 'داشبورد TikTok Ads لـ Veloura من 9 لـ 14 سبتمبر 2026.', en: "Veloura’s TikTok Ads dashboard for Sep 9–14, 2026." } },
         ],
         note: {
           // REVIEW
           ar: 'دي أول 7 أيام من تشغيل الإعلانات على الستور، والأرقام دي لقطة يوم 14 سبتمبر — الحساب لسه شغّال والأرقام بتتحرك كل يوم. وكل منصة بتحسب الشرا بطريقتها، فماينفعش أجمع رقم Meta على رقم TikTok وأقارنهم بأوردرات الستور: الأوردر الواحد ممكن يتحسب في الاتنين. ودي مبيعات متسجلة مش أرباح.',
-          en: "These are the first seven days of ads on the store, captured on Sep 14 — the account is still running and the numbers move daily. Each platform counts a purchase its own way, so Meta's number and TikTok's cannot be added together and set against the store's orders: one order can be counted by both. These are recorded sales, not profit.",
+          en: "These are the first seven days of ads on the store, captured on Sep 14 — the account is still running and the numbers move daily. Each platform counts a purchase its own way, so Meta’s number and TikTok’s cannot be added together and set against the store’s orders: one order can be counted by both. These are recorded sales, not profit.",
         },
       },
     ],
@@ -358,7 +358,7 @@ export const caseStudies: CaseStudy[] = [
     intro: {
       // REVIEW
       ar: 'تاجر جلاليب وملابس إسلامية رجالي في العتبة، جملة وقطاعي. بيزنس كبير بحضور سوشيال ضعيف — ودي كانت المشكلة.',
-      en: "A men's Islamic wear trader in Ataba, wholesale and retail. A large business with a weak social presence — that was the problem.",
+      en: "A men’s Islamic wear trader in Ataba, wholesale and retail. A large business with a weak social presence — that was the problem.",
     },
     links: [
       { label: 'TikTok', href: 'https://tiktok.com/@fkhama.eg' },
@@ -693,7 +693,7 @@ export const caseStudies: CaseStudy[] = [
     intro: {
       // REVIEW
       ar: 'كتب أطفال ومدارس للمدارس الدولية، بتستورد من بره — منها الهند. بيزنس كبير بمتابعين قليلين، يعني المبيعات مش جاية من السوشيال.',
-      en: "Children's and school books for international schools, imported from abroad including India. A large business with a small following — meaning the sales do not come from social.",
+      en: "Children’s and school books for international schools, imported from abroad including India. A large business with a small following — meaning the sales do not come from social.",
     },
     links: [
       { label: 'Facebook', href: 'https://facebook.com/brilliant200' },

@@ -29,5 +29,5 @@ export const shellNav: ShellNavItem[] = [
 
 export const shellCta = {
   href: 'https://wa.me/201008726224',
-  label: { ar: 'كلمني', en: "Let's Talk" } satisfies Localized,
+  label: { ar: 'كلمني', en: "Let’s Talk" } satisfies Localized,
 };

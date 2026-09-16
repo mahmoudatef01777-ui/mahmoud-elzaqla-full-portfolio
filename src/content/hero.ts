@@ -30,11 +30,6 @@ export const hero = {
     en: 'E-commerce Growth Specialist',
   } satisfies Localized,
 
-  availability: {
-    ar: 'متاح لوظيفة full-time',
-    en: 'Open to full-time roles',
-  } satisfies Localized,
-
   /*
     Arabic rewritten 2026-09-15 to position him as more than a media buyer:
     the first line a visitor reads should say he does not look at Ads Manager

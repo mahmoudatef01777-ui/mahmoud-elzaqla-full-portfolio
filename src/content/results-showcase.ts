@@ -77,7 +77,7 @@ export const resultsShowcase = {
       },
       alt: {
         ar: 'داشبورد Shopify لستور Bloomy: 21.9K جلسة، إجمالي مبيعات EGP 1.02M، 1,229 أوردر، ومعدل تحويل 5.44%.',
-        en: "Bloomy's Shopify dashboard: 21.9K sessions, EGP 1.02M total sales, 1,229 orders and a 5.44% conversion rate.",
+        en: "Bloomy’s Shopify dashboard: 21.9K sessions, EGP 1.02M total sales, 1,229 orders and a 5.44% conversion rate.",
       },
       span: 8,
     },
@@ -94,7 +94,7 @@ export const resultsShowcase = {
       },
       alt: {
         ar: 'داشبورد Shopify لستور Cove: 35.7K جلسة، إجمالي مبيعات EGP 1,013,875، 1,526 أوردر، ومعدل تحويل 4.14%.',
-        en: "Cove's Shopify dashboard: 35.7K sessions, EGP 1,013,875 total sales, 1,526 orders and a 4.14% conversion rate.",
+        en: "Cove’s Shopify dashboard: 35.7K sessions, EGP 1,013,875 total sales, 1,526 orders and a 4.14% conversion rate.",
       },
       span: 4,
     },
@@ -111,7 +111,7 @@ export const resultsShowcase = {
       },
       alt: {
         ar: 'داشبورد Shopify لستور Veloura: 20.1K جلسة، إجمالي مبيعات EGP 773.9K، 988 أوردر، ومتوسط قيمة الأوردر EGP 718.46.',
-        en: "Veloura's Shopify dashboard: 20.1K sessions, EGP 773.9K total sales, 988 orders and an EGP 718.46 average order value.",
+        en: "Veloura’s Shopify dashboard: 20.1K sessions, EGP 773.9K total sales, 988 orders and an EGP 718.46 average order value.",
       },
       span: 7,
     },
@@ -124,11 +124,11 @@ export const resultsShowcase = {
       logo: '/work/bloomy/logo.webp',
       caption: {
         ar: 'Odoo ERP · إجماليات أوردرات Bloomy · بيانات العملاء متخفية',
-        en: "Odoo ERP · Bloomy's order totals · customer data redacted",
+        en: "Odoo ERP · Bloomy’s order totals · customer data redacted",
       },
       alt: {
         ar: 'قائمة أوردرات في Odoo ERP بإجماليات صفوف Bloomy، وأعمدة بيانات العملاء متخفية.',
-        en: "An Odoo ERP order list showing the totals on Bloomy's rows, with the customer data columns redacted.",
+        en: "An Odoo ERP order list showing the totals on Bloomy’s rows, with the customer data columns redacted.",
       },
       span: 8,
     },

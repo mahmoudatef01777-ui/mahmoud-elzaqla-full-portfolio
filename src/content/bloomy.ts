@@ -87,7 +87,7 @@ export const bloomy = {
 
   figuresNote: {
     ar: 'دي مبيعات وأوردرات متسجلة، مش أرباح. مفيش عندي رقم مؤكد للأوردرات اللي اتسلّمت.',
-    en: "These are recorded sales and orders, not profit. I don't have a confirmed delivered-orders figure.",
+    en: "These are recorded sales and orders, not profit. I don’t have a confirmed delivered-orders figure.",
   } satisfies Localized,
 
   questions: [
@@ -145,7 +145,7 @@ export const bloomy = {
       },
       pullquote: {
         ar: 'الـ 5.44% دي نتيجة الستور كله، مش عنصر واحد — ماعملتش A/B test يثبت إن حاجة بعينها هي السبب.',
-        en: 'The 5.44% is the result of the whole store, not any one element — I never ran an A/B test that would prove otherwise.',
+        en: 'The 5.44% is the result of the whole store, not any one element — I never ran an A/B test that would prove one particular thing caused it.',
       },
       evidence: [
         {
@@ -158,7 +158,7 @@ export const bloomy = {
           },
           alt: {
             ar: 'داشبورد Shopify لستور Bloomy على مدى 47 يوم.',
-            en: "Bloomy's Shopify dashboard across 47 days.",
+            en: "Bloomy’s Shopify dashboard across 47 days.",
           },
         },
       ],
@@ -338,7 +338,7 @@ export const bloomy = {
       },
       pullquote: {
         ar: 'المرتجع مش خسارة، المرتجع داتا. بيقولك العميل رجّع ليه: المقاس غلط، ولا الكريتيف وعد بحاجة المنتج مش بيوفيها.',
-        en: "A return isn't a loss, it's data. It tells you why the customer sent it back: wrong size, or a creative that promised something the product couldn't keep.",
+        en: "A return isn’t a loss, it’s data. It tells you why the customer sent it back: wrong size, or a creative that promised something the product couldn’t keep.",
       },
     },
     {

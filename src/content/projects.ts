@@ -134,7 +134,7 @@ export const projects: Project[] = [
       fit: 'cover',
       alt: {
         ar: 'أرفف مخزن Cove مرصوصة بالمنتجات.',
-        en: "Cove's stockroom shelves, fully stocked.",
+        en: "Cove’s stockroom shelves, fully stocked.",
       },
     },
     logo: '/work/cove/logo.webp',
@@ -202,7 +202,7 @@ export const projects: Project[] = [
       fit: 'contain',
       alt: {
         ar: 'شاشة من ستور Veloura على الموبايل.',
-        en: "A screen from Veloura's store on mobile.",
+        en: "A screen from Veloura’s store on mobile.",
       },
     },
     logo: '/work/veloura/logo.webp',

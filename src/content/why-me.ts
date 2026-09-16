@@ -37,7 +37,7 @@ export const whyMe = {
 
   title: {
     ar: 'لأني مش ببص للإعلان لوحده. ببص للبيزنس اللي الإعلان المفروض يكبّره.',
-    en: "I don't look at the ad alone. I look at the business the ad is supposed to grow.",
+    en: "I don’t look at the ad alone. I look at the business the ad is supposed to grow.",
   } satisfies Localized,
 
   intro: {
@@ -66,7 +66,7 @@ export const whyMe = {
       },
       detail: {
         ar: 'عدّيت على تجهيز الأوردرات، المخزون، الشحن، العملاء، المرتجعات، الإنتاج والتشغيل. عشان كده بفهم إيه اللي بيحصل قبل الأوردر وبعده، مش بس إزاي أجيبه.',
-        en: "I've worked through order preparation, inventory, shipping, customers, returns, production and operations. So I understand what happens before and after the order — not just how to generate one.",
+        en: "I’ve worked through order preparation, inventory, shipping, customers, returns, production and operations. So I understand what happens before and after the order — not just how to generate one.",
       },
     },
     {
@@ -82,7 +82,7 @@ export const whyMe = {
       name: { ar: 'فاهم اللي بيحصل بعد الإعلان', en: 'I understand what happens after the ad' },
       detail: {
         ar: 'لو عندك Shopify، أقدر أراجع الـstore وأفهم الـUX والـCRO والـAOV. الهدف مش Traffic وخلاص؛ الهدف إن الزيارة تتحول لطلب، والطلب يبقى قابل للنمو.',
-        en: "When a business has a Shopify store, I can audit the experience and work across UX, CRO and AOV. The goal isn't traffic for its own sake — it's turning visits into orders that can actually grow.",
+        en: "When a business has a Shopify store, I can audit the experience and work across UX, CRO and AOV. The goal isn’t traffic for its own sake — it’s turning visits into orders that can actually grow.",
       },
     },
     {

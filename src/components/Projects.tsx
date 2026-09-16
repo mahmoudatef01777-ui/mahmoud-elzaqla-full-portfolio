@@ -56,7 +56,7 @@ export default function Projects() {
   return (
     <article className="container-page py-12 md:py-20">
       <header className="mb-12 md:mb-16">
-        <SectionTitle>{t(projectsPage.title)}</SectionTitle>
+        <SectionTitle as="h1">{t(projectsPage.title)}</SectionTitle>
         <p className="mt-3 max-w-[64ch] text-sm text-ink-dim md:text-base">
           {t(projectsPage.subtitle)}
         </p>

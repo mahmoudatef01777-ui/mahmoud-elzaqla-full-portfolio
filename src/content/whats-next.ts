@@ -42,12 +42,12 @@ export const whatsNext = {
 
   title: {
     ar: 'الفترة الجاية، بطوّر إيه؟',
-    en: "What's next for me?",
+    en: "What’s next for me?",
   } satisfies Localized,
 
   intro: {
     ar: 'مش واقف عند اللي بعرف أعمله النهارده. كل فترة بدخل أعمق في جزء جديد من الـE-commerce والـGrowth عشان أقدر أفهم الصورة كاملة وأاخد قرارات أحسن.',
-    en: "I'm not stopping at what I can do today. I'm going deeper into new parts of e-commerce and growth so I can understand the full picture and make better decisions.",
+    en: "I’m not stopping at what I can do today. I’m going deeper into new parts of e-commerce and growth so I can understand the full picture and make better decisions.",
   } satisfies Localized,
 
   areas: [
@@ -56,7 +56,7 @@ export const whatsNext = {
       name: 'Google Ads',
       detail: {
         ar: 'بوسّع خبرتي في Google Ads عشان مايبقاش فهمي للـPerformance Marketing معتمد على Meta وTikTok بس.',
-        en: "I'm expanding my Google Ads experience so my performance marketing knowledge isn't limited to Meta and TikTok.",
+        en: "I’m expanding my Google Ads experience so my performance marketing knowledge isn’t limited to Meta and TikTok.",
       },
     },
     {
@@ -64,7 +64,7 @@ export const whatsNext = {
       name: 'E-commerce Finance',
       detail: {
         ar: 'بتعمّق أكتر في الأرقام اللي ورا البيزنس: الـprofitability، الـcontribution margin، الـbreak-even، وتكلفة الأوردر الحقيقية.',
-        en: "I'm going deeper into the financial side of e-commerce — profitability, contribution margin, break-even and the real cost of an order.",
+        en: "I’m going deeper into the financial side of e-commerce — profitability, contribution margin, break-even and the real cost of an order.",
       },
     },
     {
@@ -72,7 +72,7 @@ export const whatsNext = {
       name: 'Data & Analytics',
       detail: {
         ar: 'بطوّر نفسي في تحليل البيانات والـtracking عشان أقدر أربط بين الـad spend، الأوردرات، المبيعات، المنتجات والنتيجة الفعلية.',
-        en: "I'm improving my data and analytics skills so I can connect ad spend, orders, sales, products and actual business results.",
+        en: "I’m improving my data and analytics skills so I can connect ad spend, orders, sales, products and actual business results.",
       },
     },
     {
@@ -80,13 +80,13 @@ export const whatsNext = {
       name: 'AI & Automation',
       detail: {
         ar: 'وده جزء أنا شغال عليه عمليًا، مش مجرد بتعلمه. ببني أنظمة تساعدني أختصر الشغل اليدوي وأوصل للمعلومة أسرع.',
-        en: "This is something I'm actively building with, not just learning. I'm creating systems that reduce manual work and help me get to useful information faster.",
+        en: "This is something I’m actively building with, not just learning. I’m creating systems that reduce manual work and help me get to useful information faster.",
       },
     },
   ] satisfies NextArea[],
 
   building: {
-    label: { ar: 'حاجات شغال عليها دلوقتي', en: "What I'm building now" } satisfies Localized,
+    label: { ar: 'حاجات شغال عليها دلوقتي', en: "What I’m building now" } satisfies Localized,
     /** Marks the one item that is an experiment rather than a direction. */
     experimentTag: { ar: 'تجربة', en: 'experiment' } satisfies Localized,
     items: [
@@ -95,7 +95,7 @@ export const whatsNext = {
         name: 'Daily E-commerce Dashboard',
         detail: {
           ar: 'نظام بشتغل عليه عشان أتابع صرف كل عميل يوميًا، تكلفة الأوردر، عدد الأوردرات، وأداء كل منصة.',
-          en: "A system I'm building to track each client's daily spend, cost per order, order volume and performance across platforms.",
+          en: "A system I’m building to track each client’s daily spend, cost per order, order volume and performance across platforms.",
         },
       },
       {
@@ -103,7 +103,7 @@ export const whatsNext = {
         name: 'AI E-commerce Assistant',
         detail: {
           ar: 'مساعد أقدر أسأله عن بيانات البيزنس بشكل طبيعي — زي أكتر منتج اتباع النهارده، كام قطعة اتباع من موديل معين، صرفنا كام، وأنهي Creative جاب أحسن نتيجة.',
-          en: "An assistant I can question naturally about business data — like today's best-selling product, units sold by model, daily spend, or which creative performed best.",
+          en: "An assistant I can question naturally about business data — like today’s best-selling product, units sold by model, daily spend, or which creative performed best.",
         },
       },
       {
@@ -111,7 +111,7 @@ export const whatsNext = {
         name: 'Internal Systems & Automation',
         detail: {
           ar: 'باستخدام Claude Code بشتغل على بناء أنظمة تحل مشاكل تشغيلية وتحليلية بدل ما أفضل أعتمد على شغل يدوي متكرر.',
-          en: "Using Claude Code, I'm building internal systems that solve operational and analytical problems instead of relying on repetitive manual work.",
+          en: "Using Claude Code, I’m building internal systems that solve operational and analytical problems instead of relying on repetitive manual work.",
         },
       },
       {
@@ -120,7 +120,7 @@ export const whatsNext = {
         experiment: true,
         detail: {
           ar: 'بجرّب workflows تساعدني أطلع صور منتجات واقعية للـe-commerce باستخدام صور المنتج وموديلات حقيقية، مع الحفاظ على شكل المنتج والموديل.',
-          en: "I'm experimenting with workflows for creating realistic e-commerce product imagery from real product and model references, while keeping the actual product and model consistent.",
+          en: "I’m experimenting with workflows for creating realistic e-commerce product imagery from real product and model references, while keeping the actual product and model consistent.",
         },
       },
     ] satisfies NextProject[],
@@ -128,6 +128,6 @@ export const whatsNext = {
 
   closing: {
     ar: 'الهدف مش إني أعرف كل حاجة، لكن إني أفضل أفهم الـsystem كله بشكل أعمق.',
-    en: "The goal isn't to know everything. It's to keep getting better at understanding the whole system.",
+    en: "The goal isn’t to know everything. It’s to keep getting better at understanding the whole system.",
   } satisfies Localized,
 };

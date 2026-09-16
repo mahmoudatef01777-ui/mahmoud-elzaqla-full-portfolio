@@ -31,7 +31,7 @@ export const wordmark = { ar: 'mahmoudelzaqla', en: 'mahmoudelzaqla' } satisfies
 
 export const navCta = {
   href: 'https://wa.me/201008726224',
-  label: { ar: 'كلمني', en: "Let's talk" } satisfies Localized,
+  label: { ar: 'كلمني', en: "Let’s talk" } satisfies Localized,
 };
 
 export const ui = {

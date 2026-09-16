@@ -57,7 +57,7 @@ export const results = {
       number: { ar: 'EGP 3.17M', en: 'EGP 3.17M' },
       numberLabel: {
         ar: 'إجمالي مبيعات البراند المتسجّلة',
-        en: "the brand's total recorded sales",
+        en: "the brand’s total recorded sales",
       },
       did: {
         ar: 'بنيت الستور وشغّلت الإعلانات والتشغيل',
@@ -66,7 +66,7 @@ export const results = {
       spend: { ar: 'صرف إعلانات: EGP 145K', en: 'ad spend: EGP 145K' },
       source: {
         ar: 'Odoo ERP · كل فترة البراند',
-        en: "Odoo ERP · the brand's whole run",
+        en: "Odoo ERP · the brand’s whole run",
       },
       image: {
         src: '/work/bloomy/results-1.webp',
@@ -82,11 +82,11 @@ export const results = {
         // REVIEW
         caption: {
           ar: 'Odoo ERP — شاشة المبيعات شهر بشهر: فبراير 540,970 · مارس 383,621 · أبريل 311,636 · مايو 1,234,532 · يونيو 473,306، يعني EGP 2.94M. الشاشة دي بتغطي الخمس شهور دول بس — إجمالي البراند على كل فترته EGP 3.17M.',
-          en: "Odoo ERP — the month-by-month sales screen: Feb 540,970 · Mar 383,621 · Apr 311,636 · May 1,234,532 · Jun 473,306, or EGP 2.94M. This screen covers those five months only — the brand's total across its whole run is EGP 3.17M.",
+          en: "Odoo ERP — the month-by-month sales screen: Feb 540,970 · Mar 383,621 · Apr 311,636 · May 1,234,532 · Jun 473,306, or EGP 2.94M. This screen covers those five months only — the brand’s total across its whole run is EGP 3.17M.",
         },
         alt: {
           ar: 'جدول من Odoo ERP بمبيعات Bloomy الشهرية من فبراير لحد يونيو 2026.',
-          en: "An Odoo ERP table of Bloomy's monthly sales from February to June 2026.",
+          en: "An Odoo ERP table of Bloomy’s monthly sales from February to June 2026.",
         },
       },
     },
@@ -113,7 +113,7 @@ export const results = {
         },
         alt: {
           ar: 'داشبورد Shopify لستور Cove من 9 مايو لحد 14 يوليو 2026.',
-          en: "Cove's Shopify dashboard covering May 9 to July 14, 2026.",
+          en: "Cove’s Shopify dashboard covering May 9 to July 14, 2026.",
         },
       },
     },
@@ -150,7 +150,7 @@ export const results = {
         },
         alt: {
           ar: 'داشبورد Shopify لستور Veloura من 7 لـ 14 سبتمبر 2026: 988 أوردر وEGP 773.9K مبيعات.',
-          en: "Veloura's Shopify dashboard for Sep 7-14, 2026: 988 orders and EGP 773.9K in sales.",
+          en: "Veloura’s Shopify dashboard for Sep 7-14, 2026: 988 orders and EGP 773.9K in sales.",
         },
       },
     },

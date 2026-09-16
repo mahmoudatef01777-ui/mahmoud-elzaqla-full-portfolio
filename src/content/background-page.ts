@@ -110,7 +110,7 @@ export const backgroundPage = {
           value: 'EGP 6.5M',
           label: {
             ar: 'مبيعات البيزنس في حوالي 6 شهور — مبيعات الشركة، مش نتيجة منسوبة ليا',
-            en: "the business's sales over about six months — the company's figure, not a result attributed to me",
+            en: "the business’s sales over about six months — the company’s figure, not a result attributed to me",
           },
         },
       ],

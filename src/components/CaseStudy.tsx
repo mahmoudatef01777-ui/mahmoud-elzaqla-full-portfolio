@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ArrowUpRight, Expand } from 'lucide-react';
 import { useLang } from '@/i18n/LanguageProvider';
-import { byLabel, caseStudyById, projectsStrip, splitLinks } from '@/content';
+import { byLabel, caseStudyById, projectsStrip, splitLinks, ui } from '@/content';
 import type { By, CaseSection, CaseShot } from '@/content';
 import { Chip, SectionTitle } from './ui';
 import SocialLinks from './ui/SocialLinks';
@@ -33,8 +33,13 @@ function Shots({ shots, onOpen }: { shots: CaseShot[]; onOpen: (i: LightboxImage
     <div className={cn('mt-7 grid gap-5', shots.length > 1 && 'md:grid-cols-2')}>
       {shots.map((s) => (
         <figure key={s.src} className="overflow-hidden rounded-card border border-ink/10 bg-cream">
+          {/* The name has to describe the ACTION. Without the label the
+              button inherits its name from the image alt inside it, so a
+              screen reader announces a description of a dashboard where it
+              should be announcing "open full size". */}
           <button
             type="button"
+            aria-label={t(ui.viewProof)}
             onClick={() => onOpen({ src: s.src, width: s.width, height: s.height, alt: t(s.alt), caption: t(s.caption) })}
             className="group relative block w-full"
           >
@@ -184,7 +189,7 @@ export default function CaseStudy({ id }: { id: string }) {
           <span className="grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-full border border-ink/10 bg-paper p-2">
             <img src={study.logo} alt="" aria-hidden width={56} height={56} className="h-full w-full rounded-full object-contain" />
           </span>
-          <SectionTitle>{study.brand}</SectionTitle>
+          <SectionTitle as="h1">{study.brand}</SectionTitle>
           {study.status && <Chip tone="orange">{t(study.status)}</Chip>}
           {featured.length > 0 && <SocialLinks links={featured} />}
         </div>
