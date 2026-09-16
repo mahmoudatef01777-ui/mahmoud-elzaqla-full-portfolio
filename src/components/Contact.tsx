@@ -4,6 +4,8 @@ import { footer, nav, wordmark } from '@/content';
 import { FadeIn } from './ui/motion';
 import { navTarget } from '@/lib/nav';
 import LiquidButton from './ui/LiquidButton';
+import Monogram from './ui/Monogram';
+import { SocialMark } from './ui/SocialLinks';
 
 /**
  * Section 7 — the final call, on #111111. It is the site footer too, so it
@@ -33,6 +35,10 @@ export default function Contact() {
           </FadeIn>
 
           <FadeIn delay={0.08} className="lg:col-span-5">
+            {/* The mark signs the call block. It is decorative here — the
+                footer's own <nav> already carries the name for assistive
+                tech — so it stays hidden rather than repeating it. */}
+            <Monogram aria-hidden className="mb-6 h-7 text-orange md:h-8" />
             {/*
               The one button on the site that fills with a colour that is not
               ours: #25D366 is WhatsApp's own green, and the CTA goes to
@@ -69,9 +75,15 @@ export default function Contact() {
                   href={footer.linkedin.href}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="font-latin text-on-dark/70 underline-offset-4 transition-colors hover:text-on-dark hover:underline"
+                  className="group inline-flex items-center gap-2 font-latin text-on-dark/70 transition-colors hover:text-on-dark"
                 >
-                  {footer.linkedin.label}
+                  <SocialMark
+                    platform="linkedin"
+                    className="shrink-0 transition-colors duration-300 ease-out group-hover:text-[#0A66C2]"
+                  />
+                  <span className="underline-offset-4 group-hover:underline">
+                    {footer.linkedin.label}
+                  </span>
                 </a>
               </li>
             </ul>
@@ -94,7 +106,10 @@ export default function Contact() {
             </ul>
           </nav>
 
-          <p className="font-latin text-xs text-on-dark/60">{t(wordmark)}</p>
+          <p className="flex items-center gap-2.5 font-latin text-xs text-on-dark/60">
+            <Monogram aria-hidden className="h-3.5 w-auto md:h-4" />
+            {t(wordmark)}
+          </p>
         </div>
 
         {/* Closes the page. Centred and mid-sized on purpose — it is a sign-off,

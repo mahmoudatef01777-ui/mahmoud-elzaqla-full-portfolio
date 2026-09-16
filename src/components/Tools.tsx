@@ -10,26 +10,21 @@ import { FadeIn } from './ui/motion';
  * each. It sits immediately below the portrait and must not compete with it,
  * so there is no heading scale, no card, and no fill — only a hairline circle.
  *
- * Each mark is the platform's official glyph. Resting state is monochrome so
- * the band reads as one quiet row rather than three competing logos; the real
- * colours arrive on hover, over 650ms.
+ * EACH MARK CARRIES ITS OWN COLOURS AT REST. Until 2026-09-16 the row was
+ * monochrome until hovered, on the argument that four grey marks read as one
+ * quiet band rather than as competing logos. Mahmoud asked for the real
+ * colours, and he is right that on a phone — where there is no hover at all —
+ * the old version meant nobody ever saw them.
  *
- * HOW THE FILL WORKS. Two copies of the mark sit in the same grid cell. The
- * grey one is always fully opaque; the coloured one lies on top of it and
- * fades 0 -> 1. It is deliberately NOT a cross-fade — fading the grey out as
- * the colour comes in would put both layers near 50% halfway through, and a
- * solid glyph would visibly go pale before it went coloured. Painting over an
- * opaque base instead means the mark only ever gains colour, which is what
- * "filling in" should look like. The same ease runs in both directions, so
- * leaving drains exactly the way entering filled.
+ * A mark with more than one colour (TikTok) carries its parts in `layers`; a
+ * single-colour mark falls back to its own `brand`. Nothing here
+ * special-cases a brand.
  *
- * A mark with more than one colour (TikTok) carries its parts in `layers`;
- * a single-colour mark falls back to its own `brand`. Either way
- * the top layer is built the same, so nothing here special-cases a brand.
- *
- * HOVER IS GATED on `@media (hover: hover)`. Without it a tap on a phone
- * latches :hover and the mark stays coloured until something else is
- * touched — the whole row then reads as though one tool is selected.
+ * HOVER, WHERE THERE IS ONE, tints the hairline ring to the platform's colour
+ * and lifts the circle a little. It is gated on `@media (hover: hover)`:
+ * without that a tap on a phone latches :hover and one mark stays lifted
+ * until something else is touched, so the row reads as though a tool is
+ * selected.
  *
  * This replaced a WhatsApp button that used to sit here. Do not put a call to
  * action back in this slot — the hero's own call, the nav and the dark footer
@@ -66,41 +61,26 @@ export default function Tools() {
                   } as CSSProperties
                 }
                 className={
-                  'grid h-12 w-12 place-items-center rounded-full border border-line text-ink-dim md:h-14 md:w-14 ' +
+                  'grid h-12 w-12 place-items-center rounded-full border border-line md:h-14 md:w-14 ' +
                   '[@media(hover:hover)]:group-hover:-translate-y-0.5 ' +
                   '[@media(hover:hover)]:group-hover:scale-[1.04] ' +
                   '[@media(hover:hover)]:group-hover:border-[var(--brand)]'
                 }
               >
-                {/* The base. Grey, and never fades. */}
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden
-                  className="col-start-1 row-start-1 h-[1.1rem] w-[1.1rem] md:h-5 md:w-5"
-                >
-                  <path d={tool.path} />
-                </svg>
-
-                {/* The colour, painted over it. */}
                 <svg
                   viewBox="0 0 24 24"
                   aria-hidden
-                  style={{
-                    transition: 'opacity 650ms cubic-bezier(0.22, 1, 0.36, 1)',
-                  }}
-                  className={
-                    'col-start-1 row-start-1 h-[1.1rem] w-[1.1rem] opacity-0 md:h-5 md:w-5 ' +
-                    '[@media(hover:hover)]:group-hover:opacity-100'
-                  }
+                  className="h-[1.1rem] w-[1.1rem] md:h-5 md:w-5"
                 >
                   {(tool.layers ?? [{ d: tool.path, fill: tool.brand }]).map((layer, li) => (
                     <path
                       key={li}
                       d={layer.d}
                       // `style`, not the `fill` attribute: a layer may be
-                      // `rgb(var(--c-ink))`, and an attribute would not
-                      // expand the custom property.
+                      // `rgb(var(--c-ink))` — TikTok's top layer is, so it is
+                      // near-black on the light page and near-white on the
+                      // dark one — and an attribute would not expand the
+                      // custom property.
                       style={{ fill: layer.fill }}
                       transform={
                         'dx' in layer || 'dy' in layer

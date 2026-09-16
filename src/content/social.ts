@@ -13,7 +13,7 @@ import { projects } from './projects';
  * components/ui/SocialLinks.tsx. Nothing else needs to change.
  */
 
-export type SocialPlatform = 'instagram' | 'facebook' | 'tiktok';
+export type SocialPlatform = 'instagram' | 'facebook' | 'tiktok' | 'linkedin';
 
 export interface BrandSocial {
   platform: SocialPlatform;
@@ -27,15 +27,17 @@ const PLATFORMS: Record<string, SocialPlatform> = {
   instagram: 'instagram',
   facebook: 'facebook',
   tiktok: 'tiktok',
+  linkedin: 'linkedin',
 };
 
 /** Display order, so every brand's row reads the same way. */
-const ORDER: SocialPlatform[] = ['instagram', 'facebook', 'tiktok'];
+const ORDER: SocialPlatform[] = ['instagram', 'facebook', 'tiktok', 'linkedin'];
 
 const ON: Record<SocialPlatform, Localized> = {
   instagram: { ar: 'على إنستجرام', en: 'on Instagram' },
   facebook: { ar: 'على فيسبوك', en: 'on Facebook' },
   tiktok: { ar: 'على تيك توك', en: 'on TikTok' },
+  linkedin: { ar: 'على لينكدإن', en: 'on LinkedIn' },
 };
 
 /** The raw links recorded for a project, by id. */

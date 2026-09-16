@@ -51,7 +51,7 @@ export const hero = {
   } satisfies Localized,
 
   subline: {
-    ar: 'بشوف المنتج، السوق، العميل، الـwebsite، الـoperations والأرقام — وبعدها بشوف الإعلان.',
+    ar: 'بشوف المنافسين والـbenchmark، المنتج، السوق، العميل، الـwebsite، الـoperations والأرقام — وبعدها بشوف الإعلان.',
     en: 'I build Shopify stores, run Meta and TikTok ads, and keep an eye on every order until it reaches the customer.',
   } satisfies Localized,
 
