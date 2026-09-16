@@ -1,15 +1,25 @@
+# Dependencies
 node_modules
+
+# Build output
 dist
 .vite
-*.local
-.DS_Store
-.vercel
 tsconfig.tsbuildinfo
 
+# Environment. This site has no backend and needs no secrets to build, so if
+# one of these ever appears, something has gone wrong — never commit them.
+.env
+.env.*
+!.env.example
+
+# Tooling and editors
+.vercel
+.claude/
+*.local
+.DS_Store
+Thumbs.db
+
 # Working screenshots from scripts/shoot.mjs and the review passes.
-# They are review artefacts, not part of the site, and they are large.
+# Review artefacts, not part of the site, and large.
 shots-*/
 shots/
-
-# Local dev-server config for the Claude preview pane.
-.claude/
