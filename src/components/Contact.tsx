@@ -112,20 +112,10 @@ export default function Contact() {
           </p>
         </div>
 
-        {/* Closes the page. Centred and mid-sized on purpose — it is a sign-off,
-            not a second hero, so it sits inside the container's own bottom
-            padding rather than standing on the edge of the viewport. */}
-        <FadeIn className="mt-12 flex justify-center md:mt-16">
-          <img
-            src={footer.photo.src}
-            alt={t(footer.photo.alt)}
-            width={footer.photo.width}
-            height={footer.photo.height}
-            loading="lazy"
-            decoding="async"
-            className="block h-auto w-64 md:w-80 lg:w-96"
-          />
-        </FadeIn>
+        {/* THE SIGN-OFF PHOTOGRAPH IS GONE, removed on 2026-09-19 at Mahmoud's
+            request. The footer ends on the wordmark now. `footer.photo` is
+            still in content/contact.ts with its dimensions and alt, so putting
+            it back is this block again and nothing else. */}
       </div>
     </footer>
   );

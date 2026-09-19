@@ -198,15 +198,12 @@ export const caseStudies: CaseStudy[] = [
           en: ['The store was built mobile-first, because nearly all the traffic arrives from Instagram. And it is still running — the frame above is the live site, not an old screenshot.'],
         },
       },
-      {
-        id: 'operations',
-        title: { ar: 'التشغيل', en: 'Operations' },
-        shots: [
-          { src: '/work/cove/ops-1.webp', width: 1500, height: 2000,
-            caption: { ar: 'المخزن — البضاعة مرصوصة بالموديل واللون. ده اللي بيخلي أوردر يتجهّز في دقايق بدل ما يتأخر.', en: 'The stockroom, sorted by style and colour. This is what lets an order be picked in minutes instead of slipping.' },
-            alt: { ar: 'أرفف مخزن Cove.', en: "Cove’s stockroom shelves." } },
-        ],
-      },
+      /*
+        THE OPERATIONS SECTION IS GONE, not emptied. Mahmoud removed the
+        stockroom photograph on 2026-09-19 and it was the whole of that
+        section — no body copy, no second shot — so a heading with nothing
+        under it is all that would have been left.
+      */
       {
         id: 'results',
         title: { ar: 'النتايج', en: 'Results' },
@@ -313,26 +310,34 @@ export const caseStudies: CaseStudy[] = [
         id: 'results',
         title: { ar: 'النتايج', en: 'Results' },
         /*
-          Refreshed 2026-09-15 to the Sep 7-14 snapshot Mahmoud sent. Every
-          figure below is read off one of the three shots beside it, and each
-          carries its own window — TikTok's starts on the 9th, not the 7th, so
-          it is labelled that way rather than folded into "the same period".
+          THREE WINDOWS, NOT ONE, AND EVERY LINE SAYS WHICH IT IS.
+
+          The Shopify figures moved to the Sep 7-17 capture on 2026-09-19, at
+          Mahmoud's request: it is the ten-day dashboard and it supersedes the
+          Sep 7-14 one, which reported 988 orders against the 1,361 here.
+
+          THE AD SPEND DID NOT MOVE WITH IT. Meta's figure is read off a Sep
+          7-14 capture and TikTok's off a Sep 9-14 one, and those are the
+          captures beside them. Carrying them forward to the 17th would mean
+          publishing a number with no capture under it, which is the one thing
+          this site does not do. Each line is labelled with its own window, so
+          nothing here claims to cover the same days as anything else.
 
           DO NOT add Meta's 657 purchases to TikTok's 287 conversions and set
-          the total against the store's 988 orders. Each platform counts a
-          purchase its own way and one order can be counted by both. The note
-          below says so; keep it.
+          the total against the store's orders. Each platform counts a purchase
+          its own way and one order can be counted by both. The note below says
+          so; keep it.
         */
         facts: [
-          { value: '988', label: { ar: 'أوردر', en: 'orders' }, source: { ar: 'Shopify · 7–14 سبتمبر 2026', en: 'Shopify · Sep 7–14, 2026' } },
-          { value: 'EGP 773.9K', label: { ar: 'مبيعات الستور', en: 'store sales' }, source: { ar: 'Shopify · نفس الفترة', en: 'Shopify · same period' } },
+          { value: '1,361', label: { ar: 'أوردر', en: 'orders' }, source: { ar: 'Shopify · 7–17 سبتمبر 2026', en: 'Shopify · Sep 7–17, 2026' } },
+          { value: 'EGP 1,061,525', label: { ar: 'مبيعات الستور · كل القنوات', en: 'store sales · all channels' }, source: { ar: 'Shopify · نفس الفترة', en: 'Shopify · same period' } },
           { value: 'EGP 13,629', label: { ar: 'صرف Meta', en: 'Meta spend' }, source: { ar: 'Meta Ads · 7–14 سبتمبر 2026', en: 'Meta Ads · Sep 7–14, 2026' } },
           { value: 'EGP 4,061', label: { ar: 'صرف TikTok', en: 'TikTok spend' }, source: { ar: 'TikTok Ads · 9–14 سبتمبر 2026', en: 'TikTok Ads · Sep 9–14, 2026' } },
         ],
         shots: [
-          { src: '/work/veloura/results-shopify-7-14.webp', width: 768, height: 438,
-            caption: { ar: 'Shopify — 20.1 ألف زيارة · EGP 773.9K مبيعات · 988 أوردر · متوسط قيمة الأوردر EGP 718.46 · 7–14 سبتمبر 2026.', en: 'Shopify — 20.1K sessions · EGP 773.9K in sales · 988 orders · EGP 718.46 average order value · Sep 7–14, 2026.' },
-            alt: { ar: 'داشبورد Shopify لستور Veloura من 7 لـ 14 سبتمبر 2026.', en: "Veloura’s Shopify dashboard for Sep 7–14, 2026." } },
+          { src: '/work/veloura/results-shopify-7-17.webp', width: 1648, height: 561,
+            caption: { ar: 'Shopify — 28.3 ألف زيارة · EGP 1,061,525 مبيعات · 1,361 أوردر · معدل تحويل 4.51% · 7–17 سبتمبر 2026.', en: 'Shopify — 28.3K sessions · EGP 1,061,525 in sales · 1,361 orders · 4.51% conversion rate · Sep 7–17, 2026.' },
+            alt: { ar: 'داشبورد Shopify لستور Veloura من 7 لـ 17 سبتمبر 2026.', en: "Veloura’s Shopify dashboard for Sep 7–17, 2026." } },
           { src: '/work/veloura/results-meta-7-14.webp', width: 1820, height: 430,
             caption: { ar: 'Meta Ads — حملتين شغالين: 657 عملية شرا من الموقع بتكلفة EGP 20.75 للشرا، وصرف EGP 13,629.83 · 7–14 سبتمبر 2026.', en: 'Meta Ads — two live campaigns: 657 website purchases at EGP 20.75 per purchase, on EGP 13,629.83 spent · Sep 7–14, 2026.' },
             alt: { ar: 'جدول حملات Meta Ads لـ Veloura فيه 657 عملية شرا وصرف 13,629.83 جنيه.', en: 'A Meta Ads campaigns table for Veloura showing 657 purchases on EGP 13,629.83 spent.' } },
@@ -342,8 +347,8 @@ export const caseStudies: CaseStudy[] = [
         ],
         note: {
           // REVIEW
-          ar: 'دي أول 7 أيام من تشغيل الإعلانات على الستور، والأرقام دي لقطة يوم 14 سبتمبر — الحساب لسه شغّال والأرقام بتتحرك كل يوم. وكل منصة بتحسب الشرا بطريقتها، فماينفعش أجمع رقم Meta على رقم TikTok وأقارنهم بأوردرات الستور: الأوردر الواحد ممكن يتحسب في الاتنين. ودي مبيعات متسجلة مش أرباح.',
-          en: "These are the first seven days of ads on the store, captured on Sep 14 — the account is still running and the numbers move daily. Each platform counts a purchase its own way, so Meta’s number and TikTok’s cannot be added together and set against the store’s orders: one order can be counted by both. These are recorded sales, not profit.",
+          ar: 'دي أول 10 أيام من تشغيل الإعلانات على الستور، وأرقام Shopify دي لقطة يوم 17 سبتمبر — الحساب لسه شغّال والأرقام بتتحرك كل يوم. وكل منصة بتحسب الشرا بطريقتها، فماينفعش أجمع رقم Meta على رقم TikTok وأقارنهم بأوردرات الستور: الأوردر الواحد ممكن يتحسب في الاتنين. ودي مبيعات متسجلة مش أرباح.',
+          en: "These are the first ten days of ads on the store, and the Shopify figures are a capture from Sep 17 — the account is still running and the numbers move daily. Each platform counts a purchase its own way, so Meta’s number and TikTok’s cannot be added together and set against the store’s orders: one order can be counted by both. These are recorded sales, not profit.",
         },
       },
     ],
@@ -632,7 +637,14 @@ export const caseStudies: CaseStudy[] = [
           { text: { ar: 'وجّهت اللي بيصوّر الريلز', en: 'Directed the person shooting the reels' }, by: 'did' },
           { text: { ar: 'مسح أكتر من 20 منافس', en: 'Mapped 20+ competitors' }, by: 'did' },
           { text: { ar: 'توصيات تجربة العميل داخل الشوروم', en: 'Customer-experience recommendations for the showroom' }, by: 'advised' },
-          { text: { ar: 'ملاحظات على الـ ERP والشحن والمخزون', en: 'Notes on the ERP, shipping and inventory' }, by: 'advised' },
+          /*
+            SAID PLAINLY ON 2026-09-19, at Mahmoud's request. This line used
+            to read "notes on the ERP, shipping and inventory", which says he
+            looked at three systems and not what he actually found: there was
+            no stock count and the pricing was wrong. It stays tagged
+            `advised` — he raised it, the business decides what to do with it.
+          */
+          { text: { ar: 'مكانش فيه سيستم يجرد البضاعة ولا تسعير مظبوط — ملاحظات على ده وعلى الـ ERP والشحن', en: 'No system for counting the stock, and pricing that was not right — notes on that, on the ERP and on shipping' }, by: 'advised' },
           { text: { ar: 'درّبت أصحاب البيزنس يشغّلوا الإعلانات بنفسهم', en: 'Trained the owners to run the ads themselves' }, by: 'did' },
           { text: { ar: 'دلوقتي هما اللي بيشغّلوا إعلانات الرسايل', en: 'They run the message ads themselves now' }, by: 'client' },
         ],

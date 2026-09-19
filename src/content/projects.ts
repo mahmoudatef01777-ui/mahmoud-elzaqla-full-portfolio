@@ -127,14 +127,19 @@ export const projects: Project[] = [
         verified: true,
       },
     ],
+    /*
+      The cover was the stockroom photograph until 2026-09-19, when Mahmoud
+      removed it from the site. This is the storefront he built, which is what
+      the card is about anyway.
+    */
     cover: {
-      src: '/work/cove/ops-1.webp',
-      width: 1500,
-      height: 2000,
+      src: '/work/cove/live-desktop.webp',
+      width: 2880,
+      height: 1360,
       fit: 'cover',
       alt: {
-        ar: 'أرفف مخزن Cove مرصوصة بالمنتجات.',
-        en: "Cove’s stockroom shelves, fully stocked.",
+        ar: 'ستور Cove على الديسك توب.',
+        en: "Cove’s storefront on desktop.",
       },
     },
     logo: '/work/cove/logo.webp',

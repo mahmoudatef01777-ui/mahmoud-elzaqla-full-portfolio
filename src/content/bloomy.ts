@@ -415,10 +415,14 @@ export const bloomy = {
         ar: [
           'Bloomy اشتغل حوالي تلات لأربع شهور، ودلوقتي واقف. أنا اللي اخترت أوقّفه وأبني خبرة وعلاقات أعمق من خلال شغل الوكالات والفريلانس قبل ما أرجعله.',
           'التجربة طلّعت نتايج قوية — إني أوقّف مش معناه إني فشلت.',
+          /* Added 2026-09-19, his words: the pause is not a gap to explain
+             away, it is a choice about where he learns fastest. */
+          'وأنا نفسي أشتغل في أجينسي بجد. بحب أتعلم، وبفضل متابع أول بأول للي بيتغير في السوق وفي المنصات — والأجينسي المكان اللي بتشوف فيه براندات كتير وحالات مختلفة في وقت واحد.',
         ],
         en: [
           'Bloomy ran for about three to four months and is currently stopped. I chose to pause it and build deeper experience and connections through agency and freelance work before coming back to it.',
           'The experience produced strong results — stopping was not the same as failing.',
+          'And I genuinely want to work at an agency. I like learning, and I keep up with what changes in the market and on the platforms — an agency is where you see many brands and many different situations at once.',
         ],
       },
     },
