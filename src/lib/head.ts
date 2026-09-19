@@ -18,22 +18,20 @@ import type { Lang } from '@/i18n/config';
  */
 
 /**
- * THE HOST THIS PAGE IS ACTUALLY BEING SERVED FROM.
+ * THE ONE HOST THIS SITE IS CANONICAL AT.
  *
- * It was the literal string "https://mahmoudelzaqla.com" — a domain with no
- * DNS record. Every page therefore published a canonical pointing at a url
- * that does not resolve, which tells a search engine the real page is
- * somewhere else and not to index the one it is reading. og:url said the same
- * thing.
+ * It named mahmoudelzaqla.com for a long time, which has no DNS record: every
+ * page published a canonical pointing at a url that does not resolve, which
+ * tells a search engine not to index the page it is reading. It was then read
+ * off `window.location.origin` while the final host was undecided, which was
+ * always correct but made the deployment url and the domain each
+ * self-canonical instead of one pointing at the other.
  *
- * Reading the live origin cannot be wrong: the canonical always names the
- * host the visitor is on. The trade is that the deployment url and a custom
- * domain each become self-canonical rather than one pointing at the other,
- * so ONCE THE DOMAIN IS DECIDED put the fixed host back here — and put it in
- * index.html's og:url and og:image at the same time, because a scraper reads
- * those and never runs any of this.
+ * It is the real domain now. index.html names the same host in og:url and
+ * og:image, which a scraper reads without running any of this — change both
+ * together or a shared card describes a different site from the one it opens.
  */
-const ORIGIN = typeof window === 'undefined' ? '' : window.location.origin;
+const ORIGIN = 'https://mahmoudelzaqla.site';
 
 function meta(selector: string, attr: 'name' | 'property', key: string, content: string) {
   let el = document.head.querySelector<HTMLMetaElement>(selector);
