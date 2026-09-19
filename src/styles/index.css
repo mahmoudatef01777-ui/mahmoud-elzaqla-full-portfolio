@@ -589,6 +589,70 @@
     mix-blend-mode: normal;
     filter: brightness(0.9) contrast(1.02);
   }
+
+  /**
+   * THE PORTRAIT BREATHES. The dashboards do not.
+   *
+   * Two nested elements carrying two independent cycles, because one cycle
+   * on one element is what makes an animation look like an animation: the
+   * eye finds the period and then cannot unsee it. A 23s sway and a 5.7s
+   * breath share no common multiple worth the name, so the pair only repeats
+   * itself every few minutes.
+   *
+   * THE SWAY pivots at `52% 96%` — the bottom of the figure, not its middle.
+   * A rotation about the bottom moves the head several pixels while the chest
+   * barely moves at all, which is how a person standing still actually reads.
+   * Every value is small on purpose: 0.32deg, a third of one percent. It is
+   * meant to be noticed as life rather than as movement, and the first and
+   * last keyframes are identical so the loop has no seam.
+   *
+   * WHAT THIS IS NOT. It cannot turn his head: there is one photograph of him
+   * and a photograph has one angle. Turning the head needs four separate
+   * exports of the head, which do not exist yet — see the note in Hero.tsx.
+   */
+  .hero-alive {
+    transform-origin: 52% 96%;
+    animation: hero-sway 23s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+    will-change: transform;
+  }
+
+  .hero-breathe {
+    transform-origin: 52% 100%;
+    animation: hero-breathe 5.7s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  @keyframes hero-sway {
+    /* rest */
+    0% { transform: rotate(0deg) translate3d(0, 0, 0); }
+    /* toward his right, and a touch up with it */
+    16% { transform: rotate(0.32deg) translate3d(0.34%, -0.1%, 0); }
+    /* back through the middle, not quite settling */
+    31% { transform: rotate(0.06deg) translate3d(0.06%, 0.02%, 0); }
+    /* toward his left */
+    48% { transform: rotate(-0.3deg) translate3d(-0.32%, -0.08%, 0); }
+    /* back through the middle again */
+    63% { transform: rotate(-0.05deg) translate3d(-0.04%, 0.04%, 0); }
+    /* the smallest settle downward, the way someone glances down */
+    80% { transform: rotate(-0.08deg) translate3d(-0.02%, 0.42%, 0); }
+    /* and home, identical to 0% so the loop cannot show a seam */
+    100% { transform: rotate(0deg) translate3d(0, 0, 0); }
+  }
+
+  @keyframes hero-breathe {
+    0% { transform: scale(1); }
+    45% { transform: scale(1.006); }
+    100% { transform: scale(1); }
+  }
+
+  /* Motion off means motion off: the portrait sits at its rest position. */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-alive,
+    .hero-breathe {
+      animation: none;
+      transform: none;
+    }
+  }
   .hero-blend-s {
     background: linear-gradient(to right, rgb(var(--c-cream)) 0%, transparent 18%);
   }
