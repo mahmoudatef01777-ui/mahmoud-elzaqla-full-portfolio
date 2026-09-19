@@ -23,3 +23,8 @@ Thumbs.db
 # Review artefacts, not part of the site, and large.
 shots-*/
 shots/
+
+# Bookkeeping from scripts/optimize-assets.mjs. It used to live in
+# public/work/<project>/index.json, where Vercel served it in place of the
+# case study at that path.
+_asset-manifests/

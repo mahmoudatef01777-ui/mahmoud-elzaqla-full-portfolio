@@ -206,7 +206,20 @@ async function processProject(sharp, ffmpeg, project) {
     }
   }
 
-  await fs.writeFile(path.join(outDir, 'index.json'), `${JSON.stringify(manifest, null, 2)}\n`);
+  /*
+    THE MANIFEST DOES NOT GO IN public/. It used to be written next to the
+    images it describes, at public/work/<project>/index.json — and Vercel
+    checks the filesystem before it applies the SPA rewrite, so a request
+    for /work/cove found that directory and served the JSON instead of the
+    site. Every English case study was a page of raw JSON on the live
+    deployment, with no console error to say so.
+
+    It is generator bookkeeping, nothing fetches it, and it belongs outside
+    anything that gets served.
+  */
+  const manifestDir = path.join('_asset-manifests', project);
+  await fs.mkdir(manifestDir, { recursive: true });
+  await fs.writeFile(path.join(manifestDir, 'index.json'), `${JSON.stringify(manifest, null, 2)}\n`);
   return manifest;
 }
 
