@@ -13,6 +13,21 @@ export const hero = {
   image: {
     desktop: '/work/personal/hero-desktop.webp',
     mobile: '/work/personal/hero-mobile.webp',
+
+    /**
+     * THE SAME TWO PICTURES IN AVIF, AND THEY ARE THE ONES ACTUALLY SERVED.
+     *
+     * The hero is the largest thing on the first screen, so it is the LCP
+     * element, and at 164 KB and 143 KB the two WebP files were most of what a
+     * phone downloaded before it could see anything. At quality 58 AVIF is
+     * 68 KB and 56 KB — about 60% off — and at 2x zoom the figures on the
+     * dashboards are indistinguishable from the WebP.
+     *
+     * The WebP above stays as the fallback in the <picture>, so a browser
+     * without AVIF still gets the hero.
+     */
+    desktopAvif: '/work/personal/hero-desktop.avif',
+    mobileAvif: '/work/personal/hero-mobile.avif',
   },
 
   focalPoint: {

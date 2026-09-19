@@ -90,8 +90,30 @@ export default function Hero() {
         */
         className="relative"
       >
+        {/*
+          TWO ELEMENTS, AND ONE OF THEM IS ALWAYS HIDDEN — WHICH COSTS A
+          REQUEST, SO THE REQUEST IS MADE AS SMALL AS POSSIBLE.
+
+          The phone composition and the wide one are different layouts, not
+          crops of each other: one is natural-height, the other is cropped
+          inside a fixed frame that the scroll parallax moves. They cannot
+          share one <picture> without rebuilding the section.
+
+          A browser resolves <picture> before it knows anything about
+          `display`, so the hidden one is fetched too. `media` on the sources
+          stops the wrong SOURCE being chosen, but the <img> underneath still
+          has a src and still fetches it — so that src is the AVIF, which
+          makes the unavoidable waste 56-68 KB instead of 143-164 KB.
+
+          A browser without AVIF is still covered: the WebP <source> in its
+          own band matches before the img's src is ever consulted. Together
+          with the format change this took the hero from ~307 KB to ~124 KB.
+        */}
+        <picture className="md:hidden">
+          <source srcSet={hero.image.mobileAvif} type="image/avif" media="(max-width: 767px)" />
+          <source srcSet={hero.image.mobile} media="(max-width: 767px)" />
         <img
-          src={hero.image.mobile}
+          src={hero.image.mobileAvif}
           alt={t(hero.imageAlt)}
           width={1122}
           height={1402}
@@ -99,10 +121,14 @@ export default function Hero() {
           className="hero-photo block h-auto w-full md:hidden"
           style={{ objectPosition: `${hero.focalPoint.mobile.x}% ${hero.focalPoint.mobile.y}%` }}
         />
+        </picture>
 
         <div className="relative hidden h-[clamp(20rem,44vw,38rem)] overflow-hidden md:block">
+          <picture>
+            <source srcSet={hero.image.desktopAvif} type="image/avif" media="(min-width: 768px)" />
+            <source srcSet={hero.image.desktop} media="(min-width: 768px)" />
           <motion.img
-            src={hero.image.desktop}
+            src={hero.image.desktopAvif}
             alt={t(hero.imageAlt)}
             width={1536}
             height={1024}
@@ -113,6 +139,7 @@ export default function Hero() {
               y: reduce ? 0 : photoY,
             }}
           />
+          </picture>
         </div>
         {/* Dissolve the bottom edge of the frame into the page. */}
         <div aria-hidden className="hero-blend-b pointer-events-none absolute inset-x-0 bottom-0 h-24 lg:h-32" />
