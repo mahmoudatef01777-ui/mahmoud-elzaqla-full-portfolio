@@ -1,93 +1,191 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Every page, in both languages. English is the root and Arabic is
+  prefixed with /ar, which is what i18n/config.ts decides and what the
+  canonical on each page says — keep the three in step.
+
+  The host was mahmoudelzaqla.com until 2026-09-19, a domain with no DNS
+  record, so this file listed fifteen urls that did not resolve.
+-->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://mahmoudelzaqla.com/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.com/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.com/en"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.com/"/>
+    <loc>https://mahmoudelzaqla.site/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/" />
   </url>
   <url>
-    <loc>https://mahmoudelzaqla.com/projects</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.com/projects"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.com/en/projects"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.com/projects"/>
+    <loc>https://mahmoudelzaqla.site/ar</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/" />
   </url>
   <url>
-    <loc>https://mahmoudelzaqla.com/background</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.com/background"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.com/en/background"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.com/background"/>
+    <loc>https://mahmoudelzaqla.site/projects</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/projects" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar/projects" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/projects" />
   </url>
   <url>
-    <loc>https://mahmoudelzaqla.com/about</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.com/about"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.com/en/about"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.com/about"/>
+    <loc>https://mahmoudelzaqla.site/ar/projects</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar/projects" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/projects" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/projects" />
   </url>
   <url>
-    <loc>https://mahmoudelzaqla.com/landing</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.com/landing"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.com/en/landing"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.com/landing"/>
+    <loc>https://mahmoudelzaqla.site/background</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/background" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar/background" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/background" />
   </url>
   <url>
-    <loc>https://mahmoudelzaqla.com/work/bloomy</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.com/work/bloomy"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.com/en/work/bloomy"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.com/work/bloomy"/>
+    <loc>https://mahmoudelzaqla.site/ar/background</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar/background" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/background" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/background" />
   </url>
   <url>
-    <loc>https://mahmoudelzaqla.com/work/cove</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.com/work/cove"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.com/en/work/cove"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.com/work/cove"/>
+    <loc>https://mahmoudelzaqla.site/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/about" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/about" />
   </url>
   <url>
-    <loc>https://mahmoudelzaqla.com/work/veloura</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.com/work/veloura"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.com/en/work/veloura"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.com/work/veloura"/>
+    <loc>https://mahmoudelzaqla.site/ar/about</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar/about" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/about" />
   </url>
   <url>
-    <loc>https://mahmoudelzaqla.com/work/fakhama</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.com/work/fakhama"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.com/en/work/fakhama"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.com/work/fakhama"/>
+    <loc>https://mahmoudelzaqla.site/landing</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/landing" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar/landing" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/landing" />
   </url>
   <url>
-    <loc>https://mahmoudelzaqla.com/work/dahab-decor</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.com/work/dahab-decor"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.com/en/work/dahab-decor"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.com/work/dahab-decor"/>
+    <loc>https://mahmoudelzaqla.site/ar/landing</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar/landing" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/landing" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/landing" />
   </url>
   <url>
-    <loc>https://mahmoudelzaqla.com/work/el-haramein</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.com/work/el-haramein"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.com/en/work/el-haramein"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.com/work/el-haramein"/>
+    <loc>https://mahmoudelzaqla.site/work/bloomy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/work/bloomy" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar/work/bloomy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/work/bloomy" />
   </url>
   <url>
-    <loc>https://mahmoudelzaqla.com/work/brilliant</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.com/work/brilliant"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.com/en/work/brilliant"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.com/work/brilliant"/>
+    <loc>https://mahmoudelzaqla.site/ar/work/bloomy</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar/work/bloomy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/work/bloomy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/work/bloomy" />
   </url>
   <url>
-    <loc>https://mahmoudelzaqla.com/work/yours-shoes</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.com/work/yours-shoes"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.com/en/work/yours-shoes"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.com/work/yours-shoes"/>
+    <loc>https://mahmoudelzaqla.site/work/cove</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/work/cove" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar/work/cove" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/work/cove" />
   </url>
   <url>
-    <loc>https://mahmoudelzaqla.com/work/kayan</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.com/work/kayan"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.com/en/work/kayan"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.com/work/kayan"/>
+    <loc>https://mahmoudelzaqla.site/ar/work/cove</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar/work/cove" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/work/cove" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/work/cove" />
   </url>
   <url>
-    <loc>https://mahmoudelzaqla.com/work/asloaraby</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.com/work/asloaraby"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.com/en/work/asloaraby"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.com/work/asloaraby"/>
+    <loc>https://mahmoudelzaqla.site/work/veloura</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/work/veloura" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar/work/veloura" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/work/veloura" />
+  </url>
+  <url>
+    <loc>https://mahmoudelzaqla.site/ar/work/veloura</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar/work/veloura" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/work/veloura" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/work/veloura" />
+  </url>
+  <url>
+    <loc>https://mahmoudelzaqla.site/work/fakhama</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/work/fakhama" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar/work/fakhama" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/work/fakhama" />
+  </url>
+  <url>
+    <loc>https://mahmoudelzaqla.site/ar/work/fakhama</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar/work/fakhama" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/work/fakhama" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/work/fakhama" />
+  </url>
+  <url>
+    <loc>https://mahmoudelzaqla.site/work/dahab-decor</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/work/dahab-decor" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar/work/dahab-decor" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/work/dahab-decor" />
+  </url>
+  <url>
+    <loc>https://mahmoudelzaqla.site/ar/work/dahab-decor</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar/work/dahab-decor" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/work/dahab-decor" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/work/dahab-decor" />
+  </url>
+  <url>
+    <loc>https://mahmoudelzaqla.site/work/el-haramein</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/work/el-haramein" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar/work/el-haramein" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/work/el-haramein" />
+  </url>
+  <url>
+    <loc>https://mahmoudelzaqla.site/ar/work/el-haramein</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar/work/el-haramein" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/work/el-haramein" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/work/el-haramein" />
+  </url>
+  <url>
+    <loc>https://mahmoudelzaqla.site/work/brilliant</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/work/brilliant" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar/work/brilliant" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/work/brilliant" />
+  </url>
+  <url>
+    <loc>https://mahmoudelzaqla.site/ar/work/brilliant</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar/work/brilliant" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/work/brilliant" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/work/brilliant" />
+  </url>
+  <url>
+    <loc>https://mahmoudelzaqla.site/work/yours-shoes</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/work/yours-shoes" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar/work/yours-shoes" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/work/yours-shoes" />
+  </url>
+  <url>
+    <loc>https://mahmoudelzaqla.site/ar/work/yours-shoes</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar/work/yours-shoes" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/work/yours-shoes" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/work/yours-shoes" />
+  </url>
+  <url>
+    <loc>https://mahmoudelzaqla.site/work/kayan</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/work/kayan" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar/work/kayan" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/work/kayan" />
+  </url>
+  <url>
+    <loc>https://mahmoudelzaqla.site/ar/work/kayan</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar/work/kayan" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/work/kayan" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/work/kayan" />
+  </url>
+  <url>
+    <loc>https://mahmoudelzaqla.site/work/asloaraby</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/work/asloaraby" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar/work/asloaraby" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/work/asloaraby" />
+  </url>
+  <url>
+    <loc>https://mahmoudelzaqla.site/ar/work/asloaraby</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahmoudelzaqla.site/ar/work/asloaraby" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahmoudelzaqla.site/work/asloaraby" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahmoudelzaqla.site/work/asloaraby" />
   </url>
 </urlset>
