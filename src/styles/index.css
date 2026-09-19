@@ -214,8 +214,11 @@
    */
   .orbit {
     position: relative;
-    /* Tall enough for the figure in the middle, not just for the ring. */
-    height: 19rem;
+    /* Tall enough for the figure in the middle, not just for the ring. The
+       box and the figure inside it were both raised on 2026-09-19, when the
+       photograph became a standing full-length portrait rather than a
+       waist-up one and read too small at the old size. */
+    height: 22rem;
     /* The cells are transformed, not laid out, so they cannot push the box
        wider; nothing here can cause a horizontal scrollbar. */
     overflow: hidden;
@@ -280,10 +283,10 @@
 
   @media (min-width: 768px) {
     .orbit {
-      height: 23rem;
+      height: 27rem;
     }
     .orbit-photo {
-      height: 92%;
+      height: 96%;
     }
     .orbit-item {
       width: 4.5rem;
@@ -309,16 +312,16 @@
     /* Below the cells. Nothing orbits behind him any more. */
     z-index: 1;
     transform: translateX(-50%);
-    height: 78%;
+    height: 90%;
     width: auto;
     object-fit: contain;
     pointer-events: none;
     user-select: none;
-    /* The cut-out ends in a straight line across his torso. Fading the last
-       fifth of it dissolves that edge into the page instead of leaving a
-       rectangle floating in the middle of the section. */
-    -webkit-mask-image: linear-gradient(to top, transparent 0, #000 20%);
-    mask-image: linear-gradient(to top, transparent 0, #000 20%);
+    /* NO MASK HERE ANY MORE. There used to be a gradient fading the last
+       fifth of the photograph, because the old cut-out ended in a straight
+       line across his torso and needed dissolving into the page. The
+       photograph is a full standing figure now — it ends at his shoes, which
+       is an edge the eye expects — and the fade was eating his feet. */
   }
 
   /**
@@ -588,70 +591,6 @@
   :root[data-theme='dark'] .hero-photo {
     mix-blend-mode: normal;
     filter: brightness(0.9) contrast(1.02);
-  }
-
-  /**
-   * THE PORTRAIT BREATHES. The dashboards do not.
-   *
-   * Two nested elements carrying two independent cycles, because one cycle
-   * on one element is what makes an animation look like an animation: the
-   * eye finds the period and then cannot unsee it. A 23s sway and a 5.7s
-   * breath share no common multiple worth the name, so the pair only repeats
-   * itself every few minutes.
-   *
-   * THE SWAY pivots at `52% 96%` — the bottom of the figure, not its middle.
-   * A rotation about the bottom moves the head several pixels while the chest
-   * barely moves at all, which is how a person standing still actually reads.
-   * Every value is small on purpose: 0.32deg, a third of one percent. It is
-   * meant to be noticed as life rather than as movement, and the first and
-   * last keyframes are identical so the loop has no seam.
-   *
-   * WHAT THIS IS NOT. It cannot turn his head: there is one photograph of him
-   * and a photograph has one angle. Turning the head needs four separate
-   * exports of the head, which do not exist yet — see the note in Hero.tsx.
-   */
-  .hero-alive {
-    transform-origin: 52% 96%;
-    animation: hero-sway 23s cubic-bezier(0.37, 0, 0.63, 1) infinite;
-    will-change: transform;
-  }
-
-  .hero-breathe {
-    transform-origin: 52% 100%;
-    animation: hero-breathe 5.7s ease-in-out infinite;
-    will-change: transform;
-  }
-
-  @keyframes hero-sway {
-    /* rest */
-    0% { transform: rotate(0deg) translate3d(0, 0, 0); }
-    /* toward his right, and a touch up with it */
-    16% { transform: rotate(0.32deg) translate3d(0.34%, -0.1%, 0); }
-    /* back through the middle, not quite settling */
-    31% { transform: rotate(0.06deg) translate3d(0.06%, 0.02%, 0); }
-    /* toward his left */
-    48% { transform: rotate(-0.3deg) translate3d(-0.32%, -0.08%, 0); }
-    /* back through the middle again */
-    63% { transform: rotate(-0.05deg) translate3d(-0.04%, 0.04%, 0); }
-    /* the smallest settle downward, the way someone glances down */
-    80% { transform: rotate(-0.08deg) translate3d(-0.02%, 0.42%, 0); }
-    /* and home, identical to 0% so the loop cannot show a seam */
-    100% { transform: rotate(0deg) translate3d(0, 0, 0); }
-  }
-
-  @keyframes hero-breathe {
-    0% { transform: scale(1); }
-    45% { transform: scale(1.006); }
-    100% { transform: scale(1); }
-  }
-
-  /* Motion off means motion off: the portrait sits at its rest position. */
-  @media (prefers-reduced-motion: reduce) {
-    .hero-alive,
-    .hero-breathe {
-      animation: none;
-      transform: none;
-    }
   }
   .hero-blend-s {
     background: linear-gradient(to right, rgb(var(--c-cream)) 0%, transparent 18%);

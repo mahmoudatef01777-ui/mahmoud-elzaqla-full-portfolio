@@ -82,60 +82,19 @@ export default function Hero() {
           style={{ objectPosition: `${hero.focalPoint.mobile.x}% ${hero.focalPoint.mobile.y}%` }}
         />
 
-        {/*
-          TWO LAYERS ON ONE CANVAS, and only one of them moves.
-
-          The dashboards are the credibility of this page. They hold still.
-          Mahmoud is a separate transparent export sitting on a copy of the
-          same 1708x921 canvas, so both images take the same `object-cover`
-          crop and the same object-position and stay in register at every
-          width without a single breakpoint of arithmetic.
-
-          The scroll parallax moves the WRAPPER, so it still moves the whole
-          composition together exactly as it did when this was one flat image.
-          The sway and the breath live on the portrait alone.
-
-          WHAT IS NOT HERE, AND WHY. Mahmoud asked for the head to turn — front,
-          right, left, down. That needs four photographs of his head, and there
-          is one. Rotating a single portrait to fake a turn does not look like a
-          turn, it looks like a sticker being tilted, so it is not done here.
-          The four positions become possible the moment four separate
-          transparent exports of the head exist at this resolution.
-        */}
         <div className="relative hidden h-[clamp(20rem,44vw,38rem)] overflow-hidden lg:block">
-          <motion.div
-            className="absolute inset-x-0 -top-[6%] h-[112%]"
-            style={{ y: reduce ? 0 : photoY }}
-          >
-            <img
-              src={hero.image.desktopBg}
-              alt=""
-              aria-hidden
-              width={1708}
-              height={921}
-              decoding="async"
-              className="hero-photo absolute inset-0 h-full w-full object-cover"
-              style={{
-                objectPosition: `${hero.focalPoint.desktop.x}% ${hero.focalPoint.desktop.y}%`,
-              }}
-            />
-
-            {/* The breath is a separate element from the sway so the two
-                cycles stay independent — see index.css. */}
-            <div className="hero-breathe absolute inset-0">
-              <img
-                src={hero.image.desktopPerson}
-                alt={t(hero.imageAlt)}
-                width={1708}
-                height={921}
-                decoding="async"
-                className="hero-photo hero-alive absolute inset-0 h-full w-full object-cover"
-                style={{
-                  objectPosition: `${hero.focalPoint.desktop.x}% ${hero.focalPoint.desktop.y}%`,
-                }}
-              />
-            </div>
-          </motion.div>
+          <motion.img
+            src={hero.image.desktop}
+            alt={t(hero.imageAlt)}
+            width={1672}
+            height={941}
+            decoding="async"
+            className="hero-photo absolute inset-x-0 -top-[6%] h-[112%] w-full object-cover mix-blend-multiply"
+            style={{
+              objectPosition: `${hero.focalPoint.desktop.x}% ${hero.focalPoint.desktop.y}%`,
+              y: reduce ? 0 : photoY,
+            }}
+          />
         </div>
         {/* Dissolve the bottom edge of the frame into the page. */}
         <div aria-hidden className="hero-blend-b pointer-events-none absolute inset-x-0 bottom-0 h-24 lg:h-32" />

@@ -13,26 +13,6 @@ export const hero = {
   image: {
     desktop: '/work/personal/hero-desktop.webp',
     mobile: '/work/personal/hero-mobile.webp',
-
-    /**
-     * THE SAME DESKTOP COMPOSITION, IN TWO LAYERS.
-     *
-     * `desktop` above is the flat version: Mahmoud and the dashboards baked
-     * into one rectangle, which is all there was until he supplied the
-     * dashboards on their own. It is still the mobile source and still the
-     * fallback, so nothing here is thrown away.
-     *
-     * These two are the same artwork split apart, both exported on ONE
-     * 1708x921 canvas — the background as supplied, and Mahmoud composited
-     * onto a transparent copy of it at the position he occupies. Sharing a
-     * canvas is the whole point: `object-cover` then crops both identically
-     * at every viewport, so the layers can never drift out of register and
-     * there is no per-breakpoint maths to keep in step.
-     *
-     * Hero.tsx moves only `desktopPerson`. The dashboards do not move.
-     */
-    desktopBg: '/work/personal/hero-desktop-bg.webp',
-    desktopPerson: '/work/personal/hero-desktop-person.webp',
   },
 
   focalPoint: {

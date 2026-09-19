@@ -260,15 +260,23 @@ export const adsManager = {
       src: '/work/pinky/ads-campaigns-mobile.webp',
       width: 453,
       height: 847,
-      brand: 'pinky bon.egg',
+      /*
+        THE ACCOUNT NAME IS BLURRED IN THE CAPTURE, so it cannot be written
+        here either. It was in three places this field reaches — the caption
+        under the image, the lightbox caption and the button's accessible
+        name — and a blurred name with the name printed beneath it is not a
+        redaction. Every figure in the image is untouched; only the account
+        it belongs to is withheld.
+      */
+      brand: 'Client account',
       objective: 'messaging',
       caption: {
         ar: 'Meta · الحملات من الموبايل',
         en: 'Meta · campaigns, from mobile',
       },
       alt: {
-        ar: 'تطبيق Meta Ads على الموبايل لحساب pinky bon.egg: مبلغ منفق 164,801.61 ج.م، وحملتين نشطتين — واحدة بـ 1,947 محادثة بتكلفة 1.92 ج.م، والتانية بـ 5,516 محادثة بتكلفة 2.06 ج.م.',
-        en: 'The Meta Ads mobile app for the pinky bon.egg account: EGP 164,801.61 spent, and two active campaigns — one with 1,947 messaging conversations at EGP 1.92 each, the other with 5,516 at EGP 2.06 each.',
+        ar: 'تطبيق Meta Ads على الموبايل لحساب عميل: مبلغ منفق 164,801.61 ج.م، وحملتين نشطتين — واحدة بـ 1,947 محادثة بتكلفة 1.92 ج.م، والتانية بـ 5,516 محادثة بتكلفة 2.06 ج.م.',
+        en: 'The Meta Ads mobile app for a client account: EGP 164,801.61 spent, and two active campaigns — one with 1,947 messaging conversations at EGP 1.92 each, the other with 5,516 at EGP 2.06 each.',
       },
     },
     {

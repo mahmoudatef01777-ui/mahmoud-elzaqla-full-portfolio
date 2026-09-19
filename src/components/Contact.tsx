@@ -123,7 +123,7 @@ export default function Contact() {
             height={footer.photo.height}
             loading="lazy"
             decoding="async"
-            className="block h-auto w-52 md:w-64 lg:w-72"
+            className="block h-auto w-64 md:w-80 lg:w-96"
           />
         </FadeIn>
       </div>

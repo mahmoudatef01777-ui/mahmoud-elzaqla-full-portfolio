@@ -30,11 +30,15 @@ export const footer = {
      * him on the home page are the same photograph rather than two different
      * ones. It has a real alpha channel, which is why it can sit straight on
      * the black with no plate or frame around it.
+     *
+     * The file kept its name and changed its contents on 2026-09-19. It used
+     * to be him behind a fan of dollar notes, which he removed from the site;
+     * this is the standing portrait he sent to replace it.
      */
   photo: {
     src: '/work/personal/orbit-centre.webp',
-    width: 1100,
-    height: 927,
+    width: 335,
+    height: 816,
     alt: { ar: 'محمود عاطف', en: 'Mahmoud Atef' } satisfies Localized,
   },
 

@@ -42,8 +42,11 @@ import { FadeIn } from './ui/motion';
  * unreadable and would look like a carousel. Scale moves a little, and only a
  * little: 0.9 to 1.
  *
- * `RING_SHIFT` drops the ring below the box's centre, so the sweep crosses
- * his chest and never his face.
+ * `RING_SHIFT` moves the ring off the box's centre, to put the sweep across
+ * the middle of the figure rather than across his face or his feet. It was
+ * 0.16 while the photograph was a waist-up cut-out, which put the sweep at
+ * his chest; the photograph is a full standing figure now, and the same 16%
+ * put every logo down around his shins.
  *
  * It pauses whenever the pointer is inside the ring, not just on an icon: the
  * icons are moving, so waiting for a hover on one of them would make clicking
@@ -73,8 +76,13 @@ const SCALE_FRONT = 1;
 const FADE_IN = 0.42;
 const FADE_FULL = 0.78;
 
-/** How far below the box centre the ring runs, as a share of the box height. */
-const RING_SHIFT = 0.16;
+/**
+ * How far below the box centre the ring runs, as a share of the box height.
+ * Negative lifts it. A full-length portrait is bottom-aligned in the box, so
+ * its own middle sits a little above the box's; this much puts the sweep
+ * across his torso rather than his hips.
+ */
+const RING_SHIFT = -0.06;
 
 /** Smooth 0..1 ramp, so marks arrive and leave without a visible edge. */
 function ramp(x: number, a: number, b: number) {
@@ -242,20 +250,21 @@ export default function ProjectsOrbit() {
           {/* The sun. A cut-out, so there is no plate or frame around him —
               he simply stands in the middle and the work circles him.
 
-              The photo is Mahmoud's own choice (2026-09-15), made after being
-              told what it costs him: it is the centre of the section that says
-              "brands I worked on from the inside", and his face is behind the
-              notes. Swapping it is one line — personal/hero-cutout.webp is a
-              clean, face-forward cut-out already in the project. */}
+              It used to be a photograph of him holding a fan of dollar notes
+              in front of his face. Mahmoud picked that one on 2026-09-15 after
+              being told what it cost him — this is the centre of the section
+              that says "brands I worked on from the inside", and it hid his
+              face behind cash. He replaced it on 2026-09-19 with this one,
+              where his face is his face. Same filename, new photograph. */}
           <img
             className="orbit-photo"
             src="/work/personal/orbit-centre.webp"
             alt={t({
-              ar: 'محمود عاطف ماسك مروحة من ورق الدولار قدام وشه وفي إيده التانية تليفون.',
-              en: 'Mahmoud Atef holding a fan of dollar notes in front of his face, a phone in his other hand.',
+              ar: 'محمود عاطف واقف وماسك تليفونه.',
+              en: 'Mahmoud Atef standing, holding his phone.',
             })}
-            width={1100}
-            height={927}
+            width={335}
+            height={816}
             loading="lazy"
             decoding="async"
           />
