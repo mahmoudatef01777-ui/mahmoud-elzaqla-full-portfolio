@@ -57,6 +57,17 @@ export default function Hero() {
       {/* ----------------------------------------------------------- photo */}
 
       {/*
+        THE UPRIGHT FILE STOPS AT 768px, NOT AT 1024.
+
+        It used to run to `lg`, which was survivable while the upright
+        composition was 1080x1350. The pair Mahmoud supplied on 2026-09-19 is
+        941x1672, and at full width that is 1365px tall at 768 and 1818px at
+        1023 — two full screens of photograph before a visitor reaches a word.
+        The wide file takes over at `md` now, inside its own fixed-height
+        frame, which is the same breakpoint the mini portfolio already used.
+      */}
+
+      {/*
         NO ENTRANCE ANIMATION ON THIS ELEMENT, deliberately.
 
         The photograph is the largest thing on the first screen, which makes
@@ -85,11 +96,11 @@ export default function Hero() {
           width={1122}
           height={1402}
           decoding="async"
-          className="hero-photo block h-auto w-full lg:hidden"
+          className="hero-photo block h-auto w-full md:hidden"
           style={{ objectPosition: `${hero.focalPoint.mobile.x}% ${hero.focalPoint.mobile.y}%` }}
         />
 
-        <div className="relative hidden h-[clamp(20rem,44vw,38rem)] overflow-hidden lg:block">
+        <div className="relative hidden h-[clamp(20rem,44vw,38rem)] overflow-hidden md:block">
           <motion.img
             src={hero.image.desktop}
             alt={t(hero.imageAlt)}
