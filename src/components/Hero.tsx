@@ -15,7 +15,14 @@ const EASE = [0.22, 1, 0.36, 1] as const;
  * The photograph is a real composition of Mahmoud in front of real Shopify
  * dashboards (docs/master-context.md). It is never cropped so tightly that
  * the dashboards disappear, and it is NEVER blurred: they are the page's
- * credibility. `mix-blend-multiply` drops its near-white studio background
+ * credibility.
+ *
+ * NO BLEND MODE ANY MORE. The photograph used to be shot on a near-white
+ * studio background and `mix-blend-multiply` dropped that rectangle into the
+ * white page. The composition Mahmoud supplied on 2026-09-19 is a dark room,
+ * and multiplying a dark image into a light page turns the whole frame to
+ * mud. The image carries its own background now, so it is composited normally
+ * in both themes.
  * into the cream page so the portrait reads as part of the composition
  * rather than a photo pasted into a card.
  */
@@ -78,7 +85,7 @@ export default function Hero() {
           width={1122}
           height={1402}
           decoding="async"
-          className="hero-photo block h-auto w-full mix-blend-multiply lg:hidden"
+          className="hero-photo block h-auto w-full lg:hidden"
           style={{ objectPosition: `${hero.focalPoint.mobile.x}% ${hero.focalPoint.mobile.y}%` }}
         />
 
@@ -86,10 +93,10 @@ export default function Hero() {
           <motion.img
             src={hero.image.desktop}
             alt={t(hero.imageAlt)}
-            width={1672}
-            height={941}
+            width={1536}
+            height={1024}
             decoding="async"
-            className="hero-photo absolute inset-x-0 -top-[6%] h-[112%] w-full object-cover mix-blend-multiply"
+            className="hero-photo absolute inset-x-0 -top-[6%] h-[112%] w-full object-cover"
             style={{
               objectPosition: `${hero.focalPoint.desktop.x}% ${hero.focalPoint.desktop.y}%`,
               y: reduce ? 0 : photoY,
