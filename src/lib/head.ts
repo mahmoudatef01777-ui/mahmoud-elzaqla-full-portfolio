@@ -17,7 +17,23 @@ import type { Lang } from '@/i18n/config';
  * og:image: that file is fixed for the whole site and index.html owns it.
  */
 
-const ORIGIN = 'https://mahmoudelzaqla.com';
+/**
+ * THE HOST THIS PAGE IS ACTUALLY BEING SERVED FROM.
+ *
+ * It was the literal string "https://mahmoudelzaqla.com" — a domain with no
+ * DNS record. Every page therefore published a canonical pointing at a url
+ * that does not resolve, which tells a search engine the real page is
+ * somewhere else and not to index the one it is reading. og:url said the same
+ * thing.
+ *
+ * Reading the live origin cannot be wrong: the canonical always names the
+ * host the visitor is on. The trade is that the deployment url and a custom
+ * domain each become self-canonical rather than one pointing at the other,
+ * so ONCE THE DOMAIN IS DECIDED put the fixed host back here — and put it in
+ * index.html's og:url and og:image at the same time, because a scraper reads
+ * those and never runs any of this.
+ */
+const ORIGIN = typeof window === 'undefined' ? '' : window.location.origin;
 
 function meta(selector: string, attr: 'name' | 'property', key: string, content: string) {
   let el = document.head.querySelector<HTMLMetaElement>(selector);
