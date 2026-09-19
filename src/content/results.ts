@@ -122,35 +122,41 @@ export const results = {
       brand: 'Veloura',
       logo: '/work/veloura/logo.webp',
       badge: { ar: 'شغال دلوقتي', en: 'live' },
-      number: { ar: '988 أوردر', en: '988 orders' },
+      number: { ar: '1,361 أوردر', en: '1,361 orders' },
       numberLabel: {
-        ar: 'EGP 773.9K مبيعات الستور · أول 7 أيام إعلانات',
-        en: 'EGP 773.9K in store sales · first 7 days of ads',
+        ar: 'EGP 1.06M مبيعات الستور · أول 10 أيام إعلانات',
+        en: 'EGP 1.06M in store sales · first 10 days of ads',
       },
       did: {
         ar: 'بنيت الستور وبشغّل Meta وTikTok',
         en: 'built the store, running Meta and TikTok',
       },
+      /*
+        THE SPEND CARRIES ITS OWN DATES NOW, and they are not the headline's.
+        The store figures moved to the Sep 7-17 capture on 2026-09-19; the two
+        spend figures did not, because the captures behind them are a Sep 7-14
+        Meta shot and a Sep 9-14 TikTok one. Rather than drop them or invent a
+        ten-day number, each is labelled with the window it actually covers.
+      */
       spend: {
-        ar: 'صرف إعلانات: EGP 13,629 على Meta + EGP 4,061 على TikTok',
-        en: 'ad spend: EGP 13,629 on Meta + EGP 4,061 on TikTok',
+        ar: 'صرف إعلانات: EGP 13,629 على Meta (7–14 سبتمبر) + EGP 4,061 على TikTok (9–14 سبتمبر)',
+        en: 'ad spend: EGP 13,629 on Meta (Sep 7–14) + EGP 4,061 on TikTok (Sep 9–14)',
       },
       source: {
-        ar: 'Shopify · 7–14 سبتمبر 2026 · نتايج مبكرة',
-        en: 'Shopify · Sep 7–14, 2026 · early results',
+        ar: 'Shopify · 7–17 سبتمبر 2026 · نتايج مبكرة',
+        en: 'Shopify · Sep 7–17, 2026 · early results',
       },
       image: {
-        src: '/work/veloura/results-shopify-7-14.webp',
-        width: 768,
-        height: 438,
-        // REVIEW
+        src: '/work/veloura/results-shopify-7-17.webp',
+        width: 1648,
+        height: 561,
         caption: {
-          ar: 'Shopify — 988 أوردر · EGP 773.9K · 20.1 ألف زيارة · متوسط أوردر EGP 718.46 · 7–14 سبتمبر 2026',
-          en: 'Shopify — 988 orders · EGP 773.9K · 20.1K sessions · EGP 718.46 average order · Sep 7–14, 2026',
+          ar: 'Shopify — 1,361 أوردر · EGP 1,061,525 · 28.3 ألف زيارة · معدل تحويل 4.51% · 7–17 سبتمبر 2026',
+          en: 'Shopify — 1,361 orders · EGP 1,061,525 · 28.3K sessions · 4.51% conversion rate · Sep 7–17, 2026',
         },
         alt: {
-          ar: 'داشبورد Shopify لستور Veloura من 7 لـ 14 سبتمبر 2026: 988 أوردر وEGP 773.9K مبيعات.',
-          en: "Veloura’s Shopify dashboard for Sep 7-14, 2026: 988 orders and EGP 773.9K in sales.",
+          ar: 'داشبورد Shopify لستور Veloura من 7 لـ 17 سبتمبر 2026: 1,361 أوردر وEGP 1,061,525 مبيعات.',
+          en: "Veloura’s Shopify dashboard for Sep 7-17, 2026: 1,361 orders and EGP 1,061,525 in sales.",
         },
       },
     },

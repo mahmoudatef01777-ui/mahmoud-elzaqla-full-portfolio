@@ -47,7 +47,7 @@ const VIEWPORTS = args.all
   ? ALL_VIEWPORTS
   : { desktop: ALL_VIEWPORTS.desktop, mobile: ALL_VIEWPORTS.mobile };
 
-const LANGS = { ar: '/', en: '/en' };
+const LANGS = { en: '/', ar: '/ar' };
 
 /** Shoot a sub-page instead of the home page: --route=/about */
 const ROUTE = typeof args.route === 'string' ? args.route.replace(/\/$/, '') : '';

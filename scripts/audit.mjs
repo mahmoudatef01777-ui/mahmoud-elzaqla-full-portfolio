@@ -82,15 +82,15 @@ page.on('requestfailed', (r) => {
   if (r.url().startsWith(BASE)) add('console', `${current}  [failed] ${r.url()}`);
 });
 
-const known = new Set(['/en']);
+const known = new Set(['/ar']);
 for (const r of ROUTES) {
   known.add(r);
-  known.add('/en' + (r === '/' ? '' : r));
+  known.add('/ar' + (r === '/' ? '' : r));
 }
 
 for (const lang of LANGS) {
   for (const route of ROUTES) {
-    const path = lang === 'en' ? '/en' + (route === '/' ? '' : route) : route;
+    const path = lang === 'ar' ? '/ar' + (route === '/' ? '' : route) : route;
     current = path;
 
     await page.setViewport({ width: 1440, height: 900, deviceScaleFactor: 1 });

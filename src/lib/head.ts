@@ -54,17 +54,20 @@ export function useHead(route: string, lang: Lang) {
     meta('meta[name="twitter:title"]', 'name', 'twitter:title', title);
     meta('meta[name="twitter:description"]', 'name', 'twitter:description', description);
 
+    // English is the root and Arabic is prefixed, since 2026-09-19. Keep this
+    // in step with i18n/config.ts — a canonical that disagrees with the url
+    // the visitor is on is worse than no canonical at all.
     const path = route === '/' ? '' : route;
-    const arUrl = `${ORIGIN}${path || '/'}`;
-    const enUrl = `${ORIGIN}/en${path}`;
-    const self = lang === 'en' ? enUrl : arUrl;
+    const enUrl = `${ORIGIN}${path || '/'}`;
+    const arUrl = `${ORIGIN}/ar${path}`;
+    const self = lang === 'ar' ? arUrl : enUrl;
 
     meta('meta[property="og:url"]', 'property', 'og:url', self);
     meta('meta[property="og:locale"]', 'property', 'og:locale', lang === 'ar' ? 'ar_EG' : 'en_US');
     link('canonical', self);
-    // Arabic is the default, so it is also x-default.
+    // English is the default, so it is also x-default.
     link('alternate', arUrl, 'ar');
     link('alternate', enUrl, 'en');
-    link('alternate', arUrl, 'x-default');
+    link('alternate', enUrl, 'x-default');
   }, [route, lang]);
 }

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -62,17 +62,28 @@
     <script>
       (function () {
         try {
+          var root = document.documentElement;
+
+          // THEME: dark unless this visitor has chosen light. Not the
+          // operating system's preference — the site should look the same to
+          // everyone who has not chosen, and dark is that look.
           var saved = localStorage.getItem('theme');
-          var dark =
-            saved === 'dark' ||
-            (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches);
-          document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+          var dark = saved !== 'light';
+          root.setAttribute('data-theme', dark ? 'dark' : 'light');
           if (dark) {
             var m = document.querySelector('meta[name="theme-color"]');
             if (m) m.setAttribute('content', '#0F0F0F');
           }
+
+          // LANGUAGE: the document ships lang="en" dir="ltr", so an Arabic url
+          // would paint left-to-right for one frame and then flip. The path
+          // already says which language this is — "/ar..." is Arabic, anything
+          // else is English. Keep this in step with src/i18n/config.ts.
+          var ar = location.pathname.split('/').filter(Boolean)[0] === 'ar';
+          root.lang = ar ? 'ar' : 'en';
+          root.dir = ar ? 'rtl' : 'ltr';
         } catch (e) {
-          document.documentElement.setAttribute('data-theme', 'light');
+          document.documentElement.setAttribute('data-theme', 'dark');
         }
       })();
     </script>

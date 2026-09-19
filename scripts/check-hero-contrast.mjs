@@ -95,7 +95,7 @@ for (const lang of ['ar', 'en']) {
   for (const vp of WIDTHS) {
     const page = await browser.newPage();
     await page.setViewport({ width: vp.width, height: vp.height, deviceScaleFactor: 1 });
-    await page.goto(`${BASE}${lang === 'en' ? '/en' : '/'}`, { waitUntil: 'networkidle0' });
+    await page.goto(`${BASE}${lang === 'ar' ? '/ar' : '/'}`, { waitUntil: 'networkidle0' });
     await page.evaluate(() => document.fonts.ready);
     await new Promise((r) => setTimeout(r, 1200));
 
