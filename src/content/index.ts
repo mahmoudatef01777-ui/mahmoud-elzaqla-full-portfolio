@@ -23,4 +23,5 @@ export * from './projects-strip';
 export * from './positioning';
 export * from './background-page';
 export * from './approach';
+export * from './growth';
 export * from './landing';

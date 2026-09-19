@@ -6,6 +6,7 @@ import Experience from '@/components/Experience';
 import Results from '@/components/Results';
 import AdsManager from '@/components/AdsManager';
 import Positioning from '@/components/Positioning';
+import Growth from '@/components/Growth';
 import ProjectsOrbit from '@/components/ProjectsOrbit';
 import WhyMe from '@/components/WhyMe';
 import WhatsNext from '@/components/WhatsNext';
@@ -65,6 +66,17 @@ function Home() {
       <Results />
       <AdsManager />
       <Positioning />
+
+      {/*
+        <Growth /> sits where <Approach /> used to, and does the same job in
+        the page's argument: the evidence is behind the reader now — the
+        figures, the dashboards, the ad accounts — so this is where the page
+        earns the right to say how the work is decided rather than what it
+        produced. It is the same approved copy the mini portfolio carries,
+        deliberately, so the two sites say one thing.
+      */}
+      <Growth />
+
       {/*
         <Approach /> — "طريقة شغلي", the twelve steps with the sticky stage and
         its per-step illustrations. Unmounted 2026-09-15 at Mahmoud's request,
